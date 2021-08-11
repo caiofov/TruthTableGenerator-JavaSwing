@@ -7,12 +7,12 @@ interface medidas{
   //dimensões
   int larguraJanela = 450;
   int alturaJanela = 250;
-  int larguraTabelaPrincipal = 250;
-  int alturaTabelaPrincipal = 150;
+  int larguraTabelaPrincipal = 230;
+  int alturaTabelaPrincipal = 100;
 
   //posição
-  int localXJanela = 5;
-  int localYJanela = 5;
+  int localXJanela = 300;
+  int localYJanela = 100;
 
   //nome para os frames
   String nome = "Trabalho Final";

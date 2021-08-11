@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 class TelaInicial extends JFrame{
   JTextField input;
-  JPanel header, body, footer, bodyTop, bodyLeft, bodyRight, bodyBottom;
+  JPanel header, body, bodyTop, bodyLeft, bodyRight, bodyBottom;
 
   TelaInicial(){
     this.setTitle(medidas.nome);
@@ -15,7 +15,6 @@ class TelaInicial extends JFrame{
 
     this.header = new JPanel();
     this.body = new JPanel();
-    this.footer = new JPanel();
 
     this.bodyTop = new JPanel();
     this.bodyBottom = new JPanel();
@@ -35,7 +34,7 @@ class TelaInicial extends JFrame{
     
     
     this.add(this.body);
-    this.add(this.footer);
+    this.add(new Footer());
     
     // this.pack();
     this.setVisible(true);
@@ -86,9 +85,9 @@ class TelaInicial extends JFrame{
 
     JPanel inputPanel = new JPanel();
     inputPanel.add(this.input);
-    inputPanel.setPreferredSize(new Dimension(25,80));
+    inputPanel.setPreferredSize(new Dimension(20,20));
     inputPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-    inputPanel.setBorder(BorderFactory.createTitledBorder("input panel"));
+    // inputPanel.setBorder(BorderFactory.createTitledBorder("input panel"));
     
 
     this.bodyLeft.setLayout(new BoxLayout (this.bodyLeft, BoxLayout.Y_AXIS));
@@ -134,7 +133,6 @@ class TelaInicial extends JFrame{
     this.bodyBottom.setBorder(BorderFactory.createTitledBorder("Body Bottom"));
     this.body.setBorder(BorderFactory.createTitledBorder("Body"));
     this.header.setBorder(BorderFactory.createTitledBorder("Header"));
-    this.footer.setBorder(BorderFactory.createTitledBorder("Footer"));
   }
 
 }

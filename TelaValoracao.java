@@ -7,7 +7,7 @@ class TelaValoracao extends JFrame{
   TabelaDisplay tabelaDisplay;
   String expressao;
   boolean tabelaSalva = false; //diz se a tabela já foi salva (para controlar se o popup aparece ou nao)
-
+  JPanel body, bodyPreTabela, bodyPosTabela;
 
   TelaValoracao(Tabela tabela){
     this.setTitle(medidas.nome);
@@ -15,21 +15,32 @@ class TelaValoracao extends JFrame{
     this.setLocation(medidas.localXJanela, medidas.localYJanela);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    this.setLayout(new FlowLayout());
+    this.setLayout(new BoxLayout (getContentPane(), BoxLayout.Y_AXIS));
     JLabel titulo = new JLabel("Tabela \n");
     
-    this.add(titulo);
+    this.body = new JPanel();
+    this.bodyPreTabela = new JPanel();
+    this.bodyPosTabela = new JPanel();
     
     this.addTextos(tabela.getExpressaoCompleta().getExpressaoString());
     this.addTabela(tabela);
     this.addBotoes();
+
+    this.body.setLayout(new BoxLayout (this.body, BoxLayout.Y_AXIS));
+
+    this.add(titulo);
+    this.add(this.body);
+    this.add(new Footer());
+    
     this.setVisible(true);
   }
   
   void addTextos(String expressao){
-    this.add(new JLabel("Expressao: "));
-    this.add(new JLabel(expressao));
-    this.add(new JLabel("Tabela: "));
+    this.bodyPreTabela.setLayout(new BoxLayout (this.bodyPreTabela, BoxLayout.Y_AXIS));
+    this.bodyPreTabela.add(new JLabel("Expressao: " + expressao));
+    this.bodyPreTabela.add(new JLabel("Tabela: "));
+
+    this.body.add(this.bodyPreTabela);
   }
 
   void addTabela(Tabela tabela){
@@ -37,7 +48,7 @@ class TelaValoracao extends JFrame{
 
     this.tabelaDisplay.setPreferredSize(new Dimension(medidas.larguraTabelaPrincipal, medidas.alturaTabelaPrincipal)); //setta as dimensões do scrollpane, onde está a tabela
 
-    this.add(this.tabelaDisplay);
+    this.body.add(this.tabelaDisplay);
   }
 
   void addBotoes(){
@@ -74,7 +85,12 @@ class TelaValoracao extends JFrame{
   
     });
 
-    this.add(bVoltar);
-    this.add(bSalvar);
+    this.bodyPosTabela.add(bVoltar);
+    this.bodyPosTabela.add(bSalvar);
+  }
+
+  private void mostrarLayout(){
+    this.bodyPreTabela.setBorder(BorderFactory.createTitledBorder("Pre Tabela"));
+    this.bodyPreTabela.setBorder(BorderFactory.createTitledBorder("Pos Tabela"));
   }
 }
