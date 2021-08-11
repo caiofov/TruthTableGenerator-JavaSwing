@@ -17,6 +17,8 @@ class TelaValoracao extends JFrame{
 
     this.setLayout(new BoxLayout (getContentPane(), BoxLayout.Y_AXIS));
     JLabel titulo = new JLabel("Tabela \n");
+    titulo.setFont(medidas.fonteTitulos);
+    titulo.setAlignmentX(CENTER_ALIGNMENT);
     
     this.body = new JPanel();
     this.bodyPreTabela = new JPanel();
@@ -37,10 +39,17 @@ class TelaValoracao extends JFrame{
   
   void addTextos(String expressao){
     this.bodyPreTabela.setLayout(new BoxLayout (this.bodyPreTabela, BoxLayout.Y_AXIS));
-    this.bodyPreTabela.add(new JLabel("Expressao: " + expressao));
-    this.bodyPreTabela.add(new JLabel("Tabela: "));
+    
+    JLabel texto1 = new JLabel("Expressao: " + expressao);
+    JLabel texto2 = new JLabel("Tabela: ");
+    texto1.setFont(medidas.fonteTextos);
+    texto2.setFont(medidas.fonteTextos);
 
-    this.body.add(this.bodyPreTabela);
+    this.bodyPreTabela.add(texto1);
+    this.bodyPreTabela.add(texto2);
+    this.bodyPreTabela.setAlignmentX(LEFT_ALIGNMENT);
+    
+    this.body.add(bodyPreTabela);
   }
 
   void addTabela(Tabela tabela){
@@ -87,6 +96,8 @@ class TelaValoracao extends JFrame{
 
     this.bodyPosTabela.add(bVoltar);
     this.bodyPosTabela.add(bSalvar);
+
+    this.body.add(bodyPosTabela);
   }
 
   private void mostrarLayout(){
