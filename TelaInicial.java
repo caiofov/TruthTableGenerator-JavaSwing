@@ -2,40 +2,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class TelaInicial extends JFrame{
+class TelaInicial extends Tela{
   JTextField input;
-  JPanel header, body, bodyTop, bodyLeft, bodyRight, bodyBottom;
+  JPanel bodyTop, bodyLeft, bodyRight, bodyBottom;
 
   TelaInicial(){
-    this.setTitle(medidas.nome);
-    this.setSize(medidas.larguraJanela, medidas.alturaJanela);
-    this.setLocation(medidas.localXJanela, medidas.localYJanela);
-    this.setLayout(new BoxLayout (getContentPane(), BoxLayout.Y_AXIS));
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    this.header = new JPanel();
-    this.body = new JPanel();
-
     this.bodyTop = new JPanel();
     this.bodyBottom = new JPanel();
     this.bodyLeft = new JPanel();
     this.bodyRight = new JPanel();
 
-    JLabel titulo = new JLabel("Valoração de Fórmulas Lógicas \n");
-    titulo.setFont(medidas.fonteTitulos);
-    this.header.add(titulo);
-
+    this.setTitulo("Valoração de Fórmulas Lógicas");
     this.input = new JTextField("Insira", 20);
     this.input.setAlignmentX(Component.CENTER_ALIGNMENT);
     
     this.add(this.header);
     this.setBody();
+    this.add(this.body);
+    this.add(this.footer);
 
     // this.mostrarLayout(); //para testes
     
     
-    this.add(this.body);
-    this.add(new Footer());
     
     // this.pack();
     this.setVisible(true);

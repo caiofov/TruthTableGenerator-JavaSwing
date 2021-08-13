@@ -3,20 +3,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-class TelaValoracao extends JFrame{
+class TelaValoracao extends Tela{
   TabelaDisplay tabelaDisplay;
   String expressao;
   boolean tabelaSalva = false; //diz se a tabela já foi salva (para controlar se o popup aparece ou nao)
   JPanel body, bodyPreTabela, bodyPosTabela;
 
   TelaValoracao(Tabela tabela){
-    this.setTitle(medidas.nome);
-    this.setSize(medidas.larguraJanela, medidas.alturaJanela);
-    this.setLocation(medidas.localXJanela, medidas.localYJanela);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     this.setLayout(new BoxLayout (getContentPane(), BoxLayout.Y_AXIS));
-    JLabel titulo = new JLabel("Tabela \n");
+    this.setTitulo("Tabela");
     titulo.setFont(medidas.fonteTitulos);
     titulo.setAlignmentX(CENTER_ALIGNMENT);
     
