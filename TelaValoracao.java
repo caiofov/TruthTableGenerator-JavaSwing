@@ -4,12 +4,14 @@ import java.awt.event.*;
 
 
 class TelaValoracao extends JFrame{
+	Tabela tabela;
   TabelaDisplay tabelaDisplay;
   String expressao;
   boolean tabelaSalva = false; //diz se a tabela já foi salva (para controlar se o popup aparece ou nao)
   JPanel body, bodyPreTabela, bodyPosTabela;
 
   TelaValoracao(Tabela tabela){
+		this.tabela = tabela;
     this.setTitle(medidas.nome);
     this.setSize(medidas.larguraJanela, medidas.alturaJanela);
     this.setLocation(medidas.localXJanela, medidas.localYJanela);
@@ -17,8 +19,6 @@ class TelaValoracao extends JFrame{
 
     this.setLayout(new BoxLayout (getContentPane(), BoxLayout.Y_AXIS));
     JLabel titulo = new JLabel("Tabela \n");
-    titulo.setFont(medidas.fonteTitulos);
-    titulo.setAlignmentX(CENTER_ALIGNMENT);
     
     this.body = new JPanel();
     this.bodyPreTabela = new JPanel();
@@ -39,17 +39,10 @@ class TelaValoracao extends JFrame{
   
   void addTextos(String expressao){
     this.bodyPreTabela.setLayout(new BoxLayout (this.bodyPreTabela, BoxLayout.Y_AXIS));
-    
-    JLabel texto1 = new JLabel("Expressao: " + expressao);
-    JLabel texto2 = new JLabel("Tabela: ");
-    texto1.setFont(medidas.fonteTextos);
-    texto2.setFont(medidas.fonteTextos);
+    this.bodyPreTabela.add(new JLabel("Expressao: " + expressao));
+    this.bodyPreTabela.add(new JLabel("Tabela: "));
 
-    this.bodyPreTabela.add(texto1);
-    this.bodyPreTabela.add(texto2);
-    this.bodyPreTabela.setAlignmentX(LEFT_ALIGNMENT);
-    
-    this.body.add(bodyPreTabela);
+    this.body.add(this.bodyPreTabela);
   }
 
   void addTabela(Tabela tabela){
@@ -88,15 +81,15 @@ class TelaValoracao extends JFrame{
         System.out.println("Salvando tabela...");
         tabelaSalva = true; //indica que salvou a tabela
 
-        //falta: mecanismo de salvar
-				// salvarTabela();
+        // Salva tabela em tabelasSalvas.txt
+				SalvarTabela slv = new SalvarTabela(tabela);
+				slv.salvarTab();
       }
   
     });
 
     this.bodyPosTabela.add(bVoltar);
     this.bodyPosTabela.add(bSalvar);
-
     this.body.add(bodyPosTabela);
   }
 

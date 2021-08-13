@@ -22,10 +22,9 @@ class TelaInicial extends JFrame{
     this.bodyRight = new JPanel();
 
     JLabel titulo = new JLabel("Valoração de Fórmulas Lógicas \n");
-    titulo.setFont(medidas.fonteTitulos);
     this.header.add(titulo);
 
-    this.input = new JTextField("Insira", 20);
+    this.input = new JTextField("Insira");
     this.input.setAlignmentX(Component.CENTER_ALIGNMENT);
     
     this.add(this.header);
@@ -71,6 +70,16 @@ class TelaInicial extends JFrame{
     bTabelasSalvas.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e){
         System.out.println("Carregando tabelas salvas...");
+
+				// Fazer a classe que lê o arquivo txt e armazena as tabelas em um arraylist de tabelas.
+
+				// LeTabelas le = new LeTabelas();
+				// le.leTabs();    // Lê o arquivo txt
+				// le.getLista();  // Retorna um ArrayList<Tabela> com as tabelas lidas no txt
+
+				// passar o arraylist de tabelas para a tela de tabelas salvas.
+
+
         //existe a opção de colocar uma barra de progresso também
       }
     
@@ -84,22 +93,19 @@ class TelaInicial extends JFrame{
     
     });
 
-    //BODY LEFT - -
     JPanel inputPanel = new JPanel();
     inputPanel.add(this.input);
-    // this.input.setPreferredSize( new Dimension( 200, 24 ) );
+    inputPanel.setPreferredSize(new Dimension(20,20));
+    inputPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
     // inputPanel.setBorder(BorderFactory.createTitledBorder("input panel"));
     
+
     this.bodyLeft.setLayout(new BoxLayout (this.bodyLeft, BoxLayout.Y_AXIS));
-    // this.bodyLeft.add(this.input);
     this.bodyLeft.add(inputPanel);
     this.bodyLeft.add(bSubmeter);
     this.bodyLeft.setAlignmentX(Component.LEFT_ALIGNMENT);
     
-
-    //BODY RIGHT - - 
     JLabel textBodyRight = new JLabel("Ver tabelas salvas");
-    textBodyRight.setFont(medidas.fonteTextos);
     textBodyRight.setAlignmentX(Component.CENTER_ALIGNMENT);
     
     this.bodyRight.add(textBodyRight);
@@ -107,23 +113,24 @@ class TelaInicial extends JFrame{
     this.bodyRight.setLayout(new BoxLayout (this.bodyRight, BoxLayout.Y_AXIS));
     this.bodyRight.setAlignmentX(Component.RIGHT_ALIGNMENT);
     
-    // BODY BOTTOM - - - -
     JLabel textBodyBottom = new JLabel("Em dúvida? Veja como funciona!");
     textBodyBottom.setAlignmentX(Component.CENTER_ALIGNMENT);
-    textBodyBottom.setFont(medidas.fonteTextos);
     this.bodyBottom.add(textBodyBottom);
     this.bodyBottom.add(bInstrucoes);
     this.bodyBottom.setLayout(new BoxLayout (this.bodyBottom, BoxLayout.Y_AXIS));
     this.bodyBottom.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-    // BODY TOP - - - -
     this.bodyTop.add(this.bodyLeft);
     this.bodyTop.add(this.bodyRight);
     this.bodyTop.setLayout(new BoxLayout (this.bodyTop, BoxLayout.X_AXIS));
     this.bodyTop.setAlignmentX(Component.CENTER_ALIGNMENT);
-   
-    //BODY - - 
+
+    
+    // this.body.setLayout(new BorderLayout());
+    // this.body.add(this.bodyLeft, BorderLayout.WEST);
+    // this.body.add(this.bodyRight, BorderLayout.EAST);
     this.body.add(this.bodyTop);
+    // this.body.add(this.bodyBottom, BorderLayout.SOUTH);
     this.body.setLayout(new BoxLayout (this.body, BoxLayout.Y_AXIS));
     this.body.setAlignmentX(Component.CENTER_ALIGNMENT);
   }

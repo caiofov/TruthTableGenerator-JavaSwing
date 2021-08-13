@@ -1,20 +1,18 @@
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
 
 interface medidas{
   //constantes de medidas para as telas
   
-  //dimensões dos elementos
-  //janela
-  int larguraJanela = 1200;
-  int alturaJanela = 650;
-  //tabela da tela de valoração
-  int larguraTabelaPrincipal = 230;
-  int alturaTabelaPrincipal = 100;
+  //dimensões
+  int larguraJanela = 450;
+  int alturaJanela = 250;
+  int larguraTabelaPrincipal = 250;
+  int alturaTabelaPrincipal = 150;
 
-  //posição de quando é aberto uma janela
-  int localXJanela = 50;
-  int localYJanela = 50;
+  //posição
+  int localXJanela = 5;
+  int localYJanela = 5;
 
   //nome para os frames
   String nome = "Trabalho Final";
@@ -23,9 +21,4 @@ interface medidas{
   Color corCinza = new Color(124,124,124);
   Color corBranca = new Color(255,255,255);
   Color corPreta = new Color(37,37,37);
-
-  //fontes
-  Font fonteTitulos = new Font("Verdana", Font.BOLD, 23);
-  Font fonteTextos = new Font("Arial", Font.PLAIN, 20);
-  Font fonteBotoes = new Font("Verdana", Font.PLAIN, 18);
 }

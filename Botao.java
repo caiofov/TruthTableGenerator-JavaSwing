@@ -12,7 +12,6 @@ class Botao extends JButton{
 
     this.setBackground(medidas.corCinza);
     this.setForeground(medidas.corBranca);
-    this.setFont(medidas.fonteBotoes);
 
     this.setBorderPainted(false); //tira a borda
     this.setFocusPainted(false); //tira a marcação de foco padrão

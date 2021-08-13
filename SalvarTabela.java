@@ -1,24 +1,30 @@
 import java.io.*;
-import java.awt.*;
 
 public class SalvarTabela {
 
-	void salvarTabela () {
-		// Criando o arquivo:
+	Tabela tab;
+
+	SalvarTabela (Tabela tab) {
+		this.tab = tab;
+	}
+
+	void salvarTab () {
+		// Criando/abrindo o arquivo:
 		File arquivo = new File ("tabelasSalvas.txt");
+		boolean append = arquivo.exists();
 		FileOutputStream fos = null;
-		DataOutputStream out = null;
+		AppendableObjectOutputStream out = null;
 
 		try {
-			fos = new FileOutputStream(arquivo);
-			out = new DataOutputStream(fos);
+			fos = new FileOutputStream(arquivo, append);
+			out = new AppendableObjectOutputStream(fos, append);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		// Escrevendo no arquivo:
 		try {
-			//out.writeDouble(random); //comentei so pq tava dando erro - caio
+			out.writeObject(tab);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -30,4 +36,35 @@ public class SalvarTabela {
 			e.printStackTrace();
 		}
 	}
+}
+
+class AppendableObjectOutputStream extends ObjectOutputStream {
+
+	private boolean append;
+	private boolean initialized;
+	private DataOutputStream dout;
+
+	protected AppendableObjectOutputStream(boolean append) throws IOException, SecurityException {
+		super();
+		this.append = append;
+		this.initialized = true;
+	}
+
+	public AppendableObjectOutputStream(OutputStream out, boolean append) throws IOException {
+		super(out);
+		this.append = append;
+		this.initialized = true;
+		this.dout = new DataOutputStream(out);
+		this.writeStreamHeader();
+	}
+
+	@Override
+	protected void writeStreamHeader() throws IOException {
+		if (!this.initialized || this.append) return;
+		if (dout != null) {
+			dout.writeShort(STREAM_MAGIC);
+			dout.writeShort(STREAM_VERSION);
+		}
+	}
+
 }
