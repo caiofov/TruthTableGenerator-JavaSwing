@@ -1,4 +1,6 @@
-class Variavel extends Elemento{
+import java.io.Serializable;
+
+class Variavel extends Elemento implements Serializable {
   Variavel(String nome){
     this.nome = nome;
   }

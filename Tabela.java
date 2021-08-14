@@ -1,10 +1,10 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-class Tabela{
+public class Tabela implements Serializable {
   ExpressaoCompleta expressaoCompleta; //a que expressão essa tabela está vinculada.
   int num_variaveis; //número de variáveis na tabela (as primeiras colunas)
   int ndois = 1; //2^n --> não consegui calcular com as operações do java
-  
 
   ArrayList<ArrayList> corpo = new ArrayList<ArrayList>(); //onde ficarão os 0 e 1s
   ArrayList<Elemento> cabecalho = new ArrayList<Elemento>(); //cabeçalho: onde fica o "título" de cada coluna

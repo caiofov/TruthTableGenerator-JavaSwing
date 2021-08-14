@@ -5,11 +5,10 @@ public class LeTabelas {
 
 	ArrayList<Tabela> listaTabs = new ArrayList<Tabela>();
 
-	void leTabs () {
-		File arquivo = new File ("tabelasSalvas.txt");
+	LeTabelas () {
+		File arquivo = new File("tabelasSalvas.bin");
 		FileInputStream fis = null;
 		ObjectInputStream in = null;
-		Tabela iTab = null;
 
 		// Abrindo o arquivo:
 		try {
@@ -22,13 +21,12 @@ public class LeTabelas {
 		// Lendo o arquivo:
 		while (true) {
 			try {
-				iTab = (Tabela) in.readObject();
+				this.listaTabs.add((Tabela) in.readObject());
 			} catch (EOFException e) {
 				break;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			listaTabs.add(iTab);
 		}
 
 		// Fechando o arquivo:

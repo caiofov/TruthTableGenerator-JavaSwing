@@ -56,7 +56,8 @@ public class TelaTabelasSalvas extends Tela {
         
     }
 
-    void exibirTabelas(){
+    void exibirTabelas() {
+
         LeTabelas leitor = new LeTabelas();
         ArrayList<Tabela> listaTabelas = leitor.getLista();
 

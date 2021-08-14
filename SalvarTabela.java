@@ -10,7 +10,7 @@ public class SalvarTabela {
 
 	void salvarTab () {
 		// Criando/abrindo o arquivo:
-		File arquivo = new File ("tabelasSalvas.txt");
+		File arquivo = new File ("tabelasSalvas.bin");
 		boolean append = arquivo.exists();
 		FileOutputStream fos = null;
 		AppendableObjectOutputStream out = null;

@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.io.Serializable;
 
-class ExpressaoCompleta{
+public class ExpressaoCompleta implements Serializable {
   String expressaoString; //expressao no formato de string
  
   char[] expressaoCharArray; //expressao como vetor
