@@ -1,8 +1,8 @@
-import javax.swing.*;
-import java.io.*;
-import java.awt.image.*;
-import javax.imageio.*;
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Footer extends JPanel {
     JLabel ccLabel, ufcLabel;

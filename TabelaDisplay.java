@@ -1,5 +1,6 @@
-import javax.swing.*;
 import java.util.ArrayList;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 class TabelaDisplay extends JScrollPane{
   Tabela tabela;

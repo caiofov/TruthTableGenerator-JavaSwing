@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.io.Serializable;
 
-class Elemento{ //essa classe sera basicamente os caracteres da expressao completa
+public class Elemento implements Serializable { //essa classe sera basicamente os caracteres da expressao completa
 
   String nome = ""; //versão em string do elemento
   //ExpressaoCompleta expressao;

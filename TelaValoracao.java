@@ -1,6 +1,13 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JOptionPane;
+
+
 
 
 class TelaValoracao extends Tela{
@@ -9,7 +16,8 @@ class TelaValoracao extends Tela{
   String expressao;
   boolean tabelaSalva = false; //diz se a tabela já foi salva (para controlar se o popup aparece ou nao)
   JPanel body, bodyPreTabela, bodyPosTabela;
-
+  
+  
   TelaValoracao(Tabela tabela){
 
     this.setLayout(new BoxLayout (getContentPane(), BoxLayout.Y_AXIS));
@@ -62,17 +70,26 @@ class TelaValoracao extends Tela{
     Botao bVoltar = new Botao("Voltar");
     
     bVoltar.addActionListener(new ActionListener() {
-    
+        
+      @Override
       public void actionPerformed(ActionEvent e){
-        TelaInicial inicio = new TelaInicial();
-        dispose();
-        System.out.println("Retornando ao início...");
-        //ao clicar, volta para a tela de início
+        
+        if(tabelaSalva == false){
+            Object[] options = { "Continuar", "Cancelar" };
+            int retorno_popup = JOptionPane.showOptionDialog(null, "Você não salvou a sua tabela. Ao prosseguir, você perderá todos os dados inseridos. \nDeseja continuar mesmo assim?", "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
-        if(!tabelaSalva){
-          //adicionar popup
+            if (retorno_popup == 0){
+                TelaInicial inicio = new TelaInicial();
+                dispose();
+                System.out.println("Retornando ao início...");
+                //ao clicar, volta para a tela de início
+            }
         }
-
+        else{
+            TelaInicial inicio = new TelaInicial();
+            dispose();
+            System.out.println("Retornando ao início...");
+        }
       }
   
     });
@@ -88,6 +105,7 @@ class TelaValoracao extends Tela{
         SalvarTabela salvar = new SalvarTabela(tabelaAtual);
         salvar.salvarTab();
         tabelaSalva = true; //indica que salvou a tabela
+        JOptionPane.showMessageDialog(null, "Sua tabela foi salva com sucesso!", "Salvo!", JOptionPane.INFORMATION_MESSAGE);
 
       }
   

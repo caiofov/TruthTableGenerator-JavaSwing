@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
 class Variavel extends Elemento implements Serializable {
-  Variavel(String nome){
+  Variavel(String nome) {
     this.nome = nome;
   }
   Variavel(String nome, int idx){
