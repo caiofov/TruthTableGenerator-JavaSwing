@@ -14,8 +14,7 @@ class TelaValoracao extends Tela{
 
     this.setLayout(new BoxLayout (getContentPane(), BoxLayout.Y_AXIS));
     this.setTitulo("Tabela");
-    titulo.setFont(medidas.fonteTitulos);
-    titulo.setAlignmentX(CENTER_ALIGNMENT);
+    
 
     this.tabelaAtual = tabela;
     

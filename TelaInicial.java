@@ -21,7 +21,7 @@ class TelaInicial extends Tela{
     this.add(this.body);
     this.add(this.footer);
 
-    // this.mostrarLayout(); //para testes
+    this.mostrarLayout(); //para testes
     
     
     
@@ -68,6 +68,8 @@ class TelaInicial extends Tela{
     bInstrucoes.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e){
         System.out.println("Indo para instruções...");
+        new TelaInstrucoes();
+        dispose();
         //existe a opção de colocar uma barra de progresso também
       }
     
@@ -113,6 +115,7 @@ class TelaInicial extends Tela{
    
     //BODY - - 
     this.body.add(this.bodyTop);
+    this.body.add(this.bodyBottom);
     this.body.setLayout(new BoxLayout (this.body, BoxLayout.Y_AXIS));
     this.body.setAlignmentX(Component.CENTER_ALIGNMENT);
   }
