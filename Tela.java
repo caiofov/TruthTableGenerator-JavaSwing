@@ -21,4 +21,11 @@ public class Tela extends JFrame{
         titulo.setFont(medidas.fonteTitulos);
         this.header.add(titulo);    
     }
+
+    void mostrarLayoutPrincipal(){ //para testes
+        this.body.setBorder(BorderFactory.createTitledBorder("Body"));
+        this.header.setBorder(BorderFactory.createTitledBorder("Header"));
+        this.footer.setBorder(BorderFactory.createTitledBorder("Footer"));
+
+    }
 }

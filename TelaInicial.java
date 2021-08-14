@@ -46,7 +46,7 @@ class TelaInicial extends Tela{
         Tabela tabela = new Tabela(expressao);
         
         new Resolver(expressao, tabela);
-        TelaValoracao valoracao = new TelaValoracao(tabela);
+        new TelaValoracao(tabela);
         dispose();
         System.out.println("Submetendo a expressão...");
         //existe a opção de colocar uma barra de progresso também
@@ -59,7 +59,8 @@ class TelaInicial extends Tela{
     bTabelasSalvas.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e){
         System.out.println("Carregando tabelas salvas...");
-        //existe a opção de colocar uma barra de progresso também
+        new TelaTabelasSalvas();
+        dispose();
       }
     
     });
@@ -122,8 +123,7 @@ class TelaInicial extends Tela{
     this.bodyRight.setBorder(BorderFactory.createTitledBorder("Body Right"));
     this.bodyTop.setBorder(BorderFactory.createTitledBorder("Body Top"));
     this.bodyBottom.setBorder(BorderFactory.createTitledBorder("Body Bottom"));
-    this.body.setBorder(BorderFactory.createTitledBorder("Body"));
-    this.header.setBorder(BorderFactory.createTitledBorder("Header"));
+    this.mostrarLayoutPrincipal();
   }
 
 }
