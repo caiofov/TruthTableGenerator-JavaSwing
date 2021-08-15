@@ -1,4 +1,6 @@
 package valoracao.view;
+import valoracao.model.*;
+import valoracao.controller.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 public class TelaInstrucoes extends Tela {
     
     
-    TelaInstrucoes(){
+    public TelaInstrucoes(){
         this.setTitulo("Instruções");
         
         this.adicionarInstrucoes();
@@ -22,7 +24,7 @@ public class TelaInstrucoes extends Tela {
 
     }
 
-    void adicionarBotoes(){
+    public void adicionarBotoes(){
         Botao bVoltar = new Botao("Voltar");
         bVoltar.addActionListener(new ActionListener() {
     
@@ -37,7 +39,7 @@ public class TelaInstrucoes extends Tela {
         this.body.add(bVoltar);
     }
 
-    void adicionarInstrucoes(){
+    public void adicionarInstrucoes(){
         this.body.add(new JLabel("1. Insira a expressão desejada na página inicial"));
         this.body.add(new JLabel("2. Submeta a expressão para gerar a tabela"));
         this.body.add(new JLabel("3. Você tem a  possibilidade de salvar a tabela gerada clicando na opção “salvar”"));

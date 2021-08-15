@@ -1,4 +1,6 @@
 package valoracao.view;
+import valoracao.model.*;
+import valoracao.controller.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,26 +10,26 @@ interface medidas{
   
   //dimensões dos elementos
   //janela
-  int larguraJanela = 600; //1200
-  int alturaJanela = 350; //650
+  public int larguraJanela = 600; //1200
+  public int alturaJanela = 350; //650
   //tabela da tela de valoração
-  int larguraTabelaPrincipal = 230;
-  int alturaTabelaPrincipal = 100;
+  public int larguraTabelaPrincipal = 230;
+  public int alturaTabelaPrincipal = 100;
 
   //posição de quando é aberto uma janela
-  int localXJanela = 50;
-  int localYJanela = 50;
+  public int localXJanela = 50;
+  public int localYJanela = 50;
 
   //nome para os frames
-  String nome = "Trabalho Final";
+  public String nome = "Trabalho Final";
 
   //cores
-  Color corCinza = new Color(124,124,124);
-  Color corBranca = new Color(255,255,255);
-  Color corPreta = new Color(37,37,37);
+  public Color corCinza = new Color(124,124,124);
+  public Color corBranca = new Color(255,255,255);
+  public Color corPreta = new Color(37,37,37);
 
   //fontes
-  Font fonteTitulos = new Font("Verdana", Font.BOLD, 23);
-  Font fonteTextos = new Font("Arial", Font.PLAIN, 20);
-  Font fonteBotoes = new Font("Verdana", Font.PLAIN, 18);
+  public Font fonteTitulos = new Font("Verdana", Font.BOLD, 23);
+  public Font fonteTextos = new Font("Arial", Font.PLAIN, 20);
+  public Font fonteBotoes = new Font("Verdana", Font.PLAIN, 18);
 }

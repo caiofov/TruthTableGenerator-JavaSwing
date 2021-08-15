@@ -1,35 +1,37 @@
 package valoracao.model;
+import valoracao.controller.*;
+import valoracao.view.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.io.Serializable;
 
 public class ExpressaoCompleta implements Serializable {
-  String expressaoString; //expressao no formato de string
+  public String expressaoString; //expressao no formato de string
  
-  char[] expressaoCharArray; //expressao como vetor
+  public char[] expressaoCharArray; //expressao como vetor
  
-  ArrayList<Elemento> elementos = new ArrayList<Elemento>();
-  ArrayList<String> variaveisString = new ArrayList<String>();
-  ArrayList<Elemento> variaveis = new ArrayList<Elemento>();
+  public ArrayList<Elemento> elementos = new ArrayList<Elemento>();
+  public ArrayList<String> variaveisString = new ArrayList<String>();
+  public ArrayList<Elemento> variaveis = new ArrayList<Elemento>();
 
 
-  ExpressaoCompleta(){
+  public ExpressaoCompleta(){
   }
 
-  ExpressaoCompleta(String exp){
+  public ExpressaoCompleta(String exp){
     this.setExpressao(exp);
     this.setElementos();
   }
 
-  void setExpressao(String exp){
+  public void setExpressao(String exp){
     this.expressaoString = exp;
     this.tratarExpressao();
     this.expressaoCharArray = exp.toCharArray();
   }
 
 
-  void setElementos(){ //pega apenas as variáveis da expressão
+  public void setElementos(){ //pega apenas as variáveis da expressão
     
     for(char c : this.expressaoCharArray){
       String s = String.valueOf(c);
@@ -70,17 +72,17 @@ public class ExpressaoCompleta implements Serializable {
 
 
 
-  ArrayList<Elemento> getVariaveis(){
+  public ArrayList<Elemento> getVariaveis(){
     return this.variaveis;
   }
-  ArrayList<Elemento> getElementos(){
+  public ArrayList<Elemento> getElementos(){
     return this.elementos;
   }
 
-  String getExpressaoString(){
+  public String getExpressaoString(){
     return this.expressaoString;
   }
-  char[] getExpressaoCharArray(){
+  public char[] getExpressaoCharArray(){
     return this.expressaoCharArray;
   }
 
@@ -162,7 +164,7 @@ public class ExpressaoCompleta implements Serializable {
     }
   }
   
-  void tratarExpressao(){ //trata a expressão, trocando os caracteres necessários
+  public void tratarExpressao(){ //trata a expressão, trocando os caracteres necessários
     this.expressaoString.toUpperCase(); //deixa todos os caracteres maiúsculos
   }
   //faz a expressão posfixa (não é pra receber a expressão, é pra fazer mesmo) --> COMO ESTÁ AGORA É SÓ PRA TESTE

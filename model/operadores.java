@@ -1,4 +1,6 @@
 package valoracao.model;
+import valoracao.controller.*;
+import valoracao.view.*;
 
 interface operadores{
   //essa interface apenas guarda umas constantes

@@ -1,17 +1,19 @@
 package valoracao.model;
+import valoracao.controller.*;
+import valoracao.view.*;
 
 import java.util.ArrayList;
 import java.io.Serializable;
 
 public class Tabela implements Serializable {
-  ExpressaoCompleta expressaoCompleta; //a que expressão essa tabela está vinculada.
-  int num_variaveis; //número de variáveis na tabela (as primeiras colunas)
-  int ndois = 1; //2^n --> não consegui calcular com as operações do java
+  public ExpressaoCompleta expressaoCompleta; //a que expressão essa tabela está vinculada.
+  public int num_variaveis; //número de variáveis na tabela (as primeiras colunas)
+  public int ndois = 1; //2^n --> não consegui calcular com as operações do java
 
-  ArrayList<ArrayList> corpo = new ArrayList<ArrayList>(); //onde ficarão os 0 e 1s
-  ArrayList<Elemento> cabecalho = new ArrayList<Elemento>(); //cabeçalho: onde fica o "título" de cada coluna
+  public ArrayList<ArrayList> corpo = new ArrayList<ArrayList>(); //onde ficarão os 0 e 1s
+  public ArrayList<Elemento> cabecalho = new ArrayList<Elemento>(); //cabeçalho: onde fica o "título" de cada coluna
 
-  Tabela(ExpressaoCompleta exp){
+  public Tabela(ExpressaoCompleta exp){
     this.expressaoCompleta = exp;
     this.num_variaveis = this.expressaoCompleta.variaveis.size();
     this.setNdois(); 
@@ -20,14 +22,14 @@ public class Tabela implements Serializable {
 
 
  
-  void setNdois(){ //calcula 2^n (não consegui fazer usando operação comum do java)
+  public void setNdois(){ //calcula 2^n (não consegui fazer usando operação comum do java)
     for(int i=0; i < this.num_variaveis; i++){
       this.ndois = this.ndois*2;
     }
   }
 
   //inicializa a tabela
-  void inicializarCorpo(){
+  public void inicializarCorpo(){
     //adiciona as variáveis já como instância de Elemento ao "cabecalho" da tabela
     //adiciona um novo array no array do corpo para cada loop, ou seja, para cada variável
     for(Elemento var : this.expressaoCompleta.getVariaveis()){
@@ -63,17 +65,17 @@ public class Tabela implements Serializable {
   }
 
   //adiciona elemento ao cabecalho da tabela
-  void adicionarElemento(Elemento elemento){
+  public void adicionarElemento(Elemento elemento){
     this.cabecalho.add(elemento);
   }
   //recebe um array de valores para adicionar ao corpo da tabela, junto com o índice correspondente à posição no cabecalho.
-  void adicionarValores(ArrayList<Integer> valores, int idx){
+  public void adicionarValores(ArrayList<Integer> valores, int idx){
     this.corpo.add(idx,valores);
   }
 
 
   //printa a tabela no prompt
-  void mostrar(){
+  public void mostrar(){
 
     System.out.println("TABELA - - - -");
     
@@ -89,13 +91,13 @@ public class Tabela implements Serializable {
     
   }
 
-  ArrayList<ArrayList> getCorpo(){
+  public ArrayList<ArrayList> getCorpo(){
     return this.corpo;
   }
-  ArrayList<Elemento> getCabecalho(){
+  public ArrayList<Elemento> getCabecalho(){
     return this.cabecalho;
   }
-  ExpressaoCompleta getExpressaoCompleta(){
+  public ExpressaoCompleta getExpressaoCompleta(){
     return this.expressaoCompleta;
   }
 

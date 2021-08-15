@@ -1,4 +1,6 @@
 package valoracao.view;
+import valoracao.model.*;
+import valoracao.controller.*;
 
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
@@ -8,7 +10,7 @@ import javax.swing.JButton;
 //definindo estilo para os nossos botoes
 class Botao extends JButton{
   
-  Botao(String label){
+  public Botao(String label){
     
     this.setText(label);
 

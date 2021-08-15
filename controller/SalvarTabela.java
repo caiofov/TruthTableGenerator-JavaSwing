@@ -1,4 +1,7 @@
 package valoracao.controller;
+import valoracao.model.*;
+import valoracao.view.*;
+
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -6,18 +9,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import valoracao.model.Tabela;
+
 
 public class SalvarTabela {
 
-	Tabela tab;
+	public Tabela tab;
 
-	SalvarTabela (Tabela tab) {
+	public SalvarTabela (Tabela tab) {
 		this.tab = tab;
 	}
 
-	void salvarTab () {
+	public void salvarTab () {
 		// Criando/abrindo o arquivo:
-		File arquivo = new File ("tabelasSalvas.bin");
+		File arquivo = new File ("./tabelasSalvas.bin");
 		boolean append = arquivo.exists();
 		FileOutputStream fos = null;
 		AppendableObjectOutputStream out = null;

@@ -1,4 +1,6 @@
 package valoracao.view;
+import valoracao.model.*;
+import valoracao.controller.*;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -8,6 +10,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
+import valoracao.controller.SalvarTabela;
+import valoracao.model.Tabela;
 
 
 
@@ -20,7 +24,7 @@ class TelaValoracao extends Tela{
   JPanel body, bodyPreTabela, bodyPosTabela;
   
   
-  TelaValoracao(Tabela tabela){
+  public TelaValoracao(Tabela tabela){
 
     this.setLayout(new BoxLayout (getContentPane(), BoxLayout.Y_AXIS));
     this.setTitulo("Tabela");
@@ -45,7 +49,7 @@ class TelaValoracao extends Tela{
     this.setVisible(true);
   }
   
-  void addTextos(String expressao){
+  public void addTextos(String expressao){
     this.bodyPreTabela.setLayout(new BoxLayout (this.bodyPreTabela, BoxLayout.Y_AXIS));
     
     JLabel texto1 = new JLabel("Expressao: " + expressao);
@@ -60,7 +64,7 @@ class TelaValoracao extends Tela{
     this.body.add(bodyPreTabela);
   }
 
-  void addTabela(){
+  public void addTabela(){
     this.tabelaDisplay = new TabelaDisplay(this.tabelaAtual); 
 
     this.tabelaDisplay.display.setPreferredSize(new Dimension(medidas.larguraTabelaPrincipal, medidas.alturaTabelaPrincipal)); //setta as dimensões do scrollpane, onde está a tabela
@@ -68,7 +72,7 @@ class TelaValoracao extends Tela{
     this.body.add(this.tabelaDisplay);
   }
 
-  void addBotoes(){
+  public void addBotoes(){
     Botao bVoltar = new Botao("Voltar");
     
     bVoltar.addActionListener(new ActionListener() {

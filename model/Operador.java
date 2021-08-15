@@ -1,6 +1,8 @@
 package valoracao.model;
+import valoracao.controller.*;
+import valoracao.view.*;
 
-class Operador extends Elemento{
+public class Operador extends Elemento{
   boolean operacao; //indica se é um operador mesmo (true) ou só parenteses (false)
   
   Operador(String nome, boolean operacao){

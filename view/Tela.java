@@ -1,4 +1,6 @@
 package valoracao.view;
+import valoracao.model.*;
+import valoracao.controller.*;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -12,7 +14,7 @@ public class Tela extends JFrame{
     JPanel body = new JPanel();
     JLabel titulo = new JLabel();
 
-    Tela(){
+    public Tela(){
         this.setTitle(medidas.nome);
         this.setSize(medidas.larguraJanela, medidas.alturaJanela);
         this.setLocation(medidas.localXJanela, medidas.localYJanela);
@@ -20,14 +22,14 @@ public class Tela extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    void setTitulo(String texto){
+    public void setTitulo(String texto){
         this.titulo.setText(texto);
         titulo.setFont(medidas.fonteTitulos);
         titulo.setAlignmentX(CENTER_ALIGNMENT);
         this.header.add(titulo);    
     }
 
-    void mostrarLayoutPrincipal(){ //para testes
+    public void mostrarLayoutPrincipal(){ //para testes
         this.body.setBorder(BorderFactory.createTitledBorder("Body"));
         this.header.setBorder(BorderFactory.createTitledBorder("Header"));
         this.footer.setBorder(BorderFactory.createTitledBorder("Footer"));

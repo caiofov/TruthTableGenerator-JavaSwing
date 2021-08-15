@@ -1,26 +1,28 @@
 package valoracao.model;
+import valoracao.controller.*;
+import valoracao.view.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-class ExpressaoMinima extends Elemento{
-  boolean resolvido = false; //indica se a expressão mínima já foi resolvida
-  ArrayList<Elemento> elementos = new ArrayList<Elemento>();
-  Elemento operador, var1, var2;
+public class ExpressaoMinima extends Elemento{
+  public boolean resolvido = false; //indica se a expressão mínima já foi resolvida
+  public ArrayList<Elemento> elementos = new ArrayList<Elemento>();
+  public Elemento operador, var1, var2;
 
-  ExpressaoMinima(){}
+  public ExpressaoMinima(){}
   ExpressaoMinima(ArrayList<Elemento> elementos){
     this.setAtributos(elementos);
   }
-  ExpressaoMinima(String nome){
+  public ExpressaoMinima(String nome){
     this.nome = nome;
   }
-  ExpressaoMinima(String nome, int idx){
+  public ExpressaoMinima(String nome, int idx){
     this.nome = nome;
     this.indexTabela = idx;
   }
 
-  void setAtributos(ArrayList<Elemento> elementos){
+  public void setAtributos(ArrayList<Elemento> elementos){
     for(Elemento elm : elementos){
       this.nome = this.nome + elm.getNome();
       if(elm instanceof Operador){
@@ -38,10 +40,10 @@ class ExpressaoMinima extends Elemento{
     }
   }
 
-  void setResolvido(){
+  public void setResolvido(){
     this.resolvido = true;
   }
-  boolean isResolvido(){
+  public boolean isResolvido(){
     return this.resolvido;
   }
 

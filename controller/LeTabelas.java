@@ -1,18 +1,21 @@
 package valoracao.controller;
+import valoracao.model.*;
+import valoracao.view.*;
 
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import valoracao.model.Tabela;
 
 
 public class LeTabelas {
 
-	ArrayList<Tabela> listaTabs = new ArrayList<Tabela>();
+	public ArrayList<Tabela> listaTabs = new ArrayList<Tabela>();
 
-	LeTabelas () {
-		File arquivo = new File("tabelasSalvas.bin");
+	public LeTabelas () {
+		File arquivo = new File("./tabelasSalvas.bin");
 		FileInputStream fis = null;
 		ObjectInputStream in = null;
 
@@ -43,7 +46,7 @@ public class LeTabelas {
 		}
 	}
 
-	ArrayList<Tabela> getLista () {
+	public ArrayList<Tabela> getLista () {
 		return this.listaTabs;
 	}
 

@@ -1,4 +1,6 @@
 package valoracao.controller;
+import valoracao.model.*;
+import valoracao.view.*;
 
 import java.util.ArrayList;
 import javax.swing.JScrollPane;
@@ -6,24 +8,26 @@ import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
+import valoracao.model.Elemento;
+import valoracao.model.Tabela;
 
-class TabelaDisplay extends JPanel{
-  Tabela tabela;
-  JTable display;
-  String[] cabecalho;
-  Integer[][] linhas;
-  JLabel titulo;
-  JScrollPane body;
+public class TabelaDisplay extends JPanel{
+  public Tabela tabela;
+  public JTable display;
+  public String[] cabecalho;
+  public Integer[][] linhas;
+  public JLabel titulo;
+  public JScrollPane body;
 
 
-  TabelaDisplay(){}
-  TabelaDisplay(Tabela tabela){
+  public TabelaDisplay(){}
+  public TabelaDisplay(Tabela tabela){
     this.setTabela(tabela);
     this.setLayout(new BoxLayout (this, BoxLayout.Y_AXIS));
     this.add(this.body);
   }
 
-  TabelaDisplay(Tabela tabela, String titulo){
+  public TabelaDisplay(Tabela tabela, String titulo){
     this.setTitulo(titulo);
     this.setTabela(tabela);
     this.setLayout(new BoxLayout (this, BoxLayout.Y_AXIS));
@@ -31,29 +35,29 @@ class TabelaDisplay extends JPanel{
 
   }
 
-  TabelaDisplay(Integer[][] linhas, String[] cabecalho){
+  public TabelaDisplay(Integer[][] linhas, String[] cabecalho){
     this.setCabecalho(cabecalho);
     this.setLinhas(linhas);
     this.setDisplay();
 
   }
 
-  void setTabela(Tabela tabela){
+  public void setTabela(Tabela tabela){
     this.tabela = tabela;
     this.transformarArrayList();
     this.setDisplay();
   }
 
-  void setCabecalho(String[] dados){
+  public void setCabecalho(String[] dados){
     this.cabecalho = dados;
   }
-  void setLinhas(Integer[][] dados){
+  public void setLinhas(Integer[][] dados){
     this.linhas = dados;
   }
-  void setDisplay(){
+  public void setDisplay(){
     this.setDisplay(this.linhas, this.cabecalho);
   }
-  void setDisplay(Integer[][] linhas, String[] cabecalho){
+  public void setDisplay(Integer[][] linhas, String[] cabecalho){
     this.display = new JTable(linhas,cabecalho){
       public boolean isCellEditable(int row, int column) {return false;}; //remove a possibilidade de editar a tabela
     };
@@ -63,7 +67,7 @@ class TabelaDisplay extends JPanel{
     this.body = new JScrollPane(this.display); //adiciona a tabela ao JScrollPane
   }
 
-  void setTitulo(String tit){
+  public void setTitulo(String tit){
     this.titulo = new JLabel(tit);
     this.add(this.titulo);
   }

@@ -1,9 +1,11 @@
 package valoracao.model;
+import valoracao.controller.*;
+import valoracao.view.*;
 
 import java.io.Serializable;
 
-class Variavel extends Elemento implements Serializable {
-  Variavel(String nome) {
+public class Variavel extends Elemento implements Serializable {
+  Variavel(String nome){
     this.nome = nome;
   }
   Variavel(String nome, int idx){
@@ -11,7 +13,7 @@ class Variavel extends Elemento implements Serializable {
     this.indexTabela = idx;
   }
 
-  int getIndexTabela(){
+  public int getIndexTabela(){
     return this.indexTabela;
   }
 }

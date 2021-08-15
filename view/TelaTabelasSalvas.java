@@ -1,4 +1,6 @@
 package valoracao.view;
+import valoracao.model.*;
+import valoracao.controller.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import valoracao.model.Tabela;
+
 
 
 public class TelaTabelasSalvas extends Tela {
@@ -17,7 +21,7 @@ public class TelaTabelasSalvas extends Tela {
     LeTabelas leitor = new LeTabelas();
     
     
-    TelaTabelasSalvas(){
+    public TelaTabelasSalvas(){
         this.setTitulo("Tabelas Salvas");
         
         this.exibirTabelas();
@@ -32,14 +36,14 @@ public class TelaTabelasSalvas extends Tela {
         this.add(this.body);
         this.add(this.footer);
         
-        this.mostrarLayout(); //para testes
+        //this.mostrarLayout(); //para testes
         this.body.setLayout(new BoxLayout(this.body, BoxLayout.Y_AXIS ));
         this.setVisible(true);
     }
 
     
     
-    void adicionarBotoes(){
+    public void adicionarBotoes(){
         Botao bVoltar = new Botao("Voltar");
         Botao bExcluirTabela = new Botao("Excluir Tabela");
     
@@ -76,7 +80,7 @@ public class TelaTabelasSalvas extends Tela {
         
     }
 
-    void exibirTabelas() {
+    public void exibirTabelas() {
 
         //LeTabelas leitor = new LeTabelas();
         ArrayList<Tabela> listaTabelas = leitor.getLista();
@@ -95,7 +99,7 @@ public class TelaTabelasSalvas extends Tela {
 
     }
 
-    void mostrarLayout(){
+    public void mostrarLayout(){
         this.bodyTabelasScroll.setBorder(BorderFactory.createTitledBorder("Tabelas"));
         this.bodyPosTabelas.setBorder(BorderFactory.createTitledBorder("Pos tabelas"));
         this.mostrarLayoutPrincipal();

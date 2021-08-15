@@ -1,4 +1,7 @@
 package valoracao.view;
+import valoracao.model.*;
+import valoracao.controller.*;
+
 
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -10,10 +13,10 @@ public class Footer extends JPanel {
     JLabel ccLabel, ufcLabel;
     
     
-    Footer(){
+    public Footer(){
         
         //redimensionando imagem UFC
-        ImageIcon ufcIcon = new ImageIcon("assets/ufchorizontal.png");
+        ImageIcon ufcIcon = new ImageIcon("./assets/ufchorizontal.png");
         Image ufcImg = ufcIcon.getImage();
         Image newUfcImg = ufcImg.getScaledInstance(200, 50,  java.awt.Image.SCALE_SMOOTH);
         ufcIcon = new ImageIcon(newUfcImg);

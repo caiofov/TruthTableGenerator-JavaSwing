@@ -1,4 +1,6 @@
 package valoracao.view;
+import valoracao.model.*;
+import valoracao.controller.*;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -12,13 +14,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
+import valoracao.model.ExpressaoCompleta;
+import valoracao.model.Tabela;
 
 
-class TelaInicial extends Tela{
+
+public class TelaInicial extends Tela{
   JTextField input;
   JPanel bodyTop, bodyLeft, bodyRight, bodyBottom;
 
-  TelaInicial(){
+  public TelaInicial(){
     this.bodyTop = new JPanel();
     this.bodyBottom = new JPanel();
     this.bodyLeft = new JPanel();
@@ -33,7 +38,7 @@ class TelaInicial extends Tela{
     this.add(this.body);
     this.add(this.footer);
 
-    this.mostrarLayout(); //para testes
+    //this.mostrarLayout(); //para testes
     
     
     
@@ -41,7 +46,7 @@ class TelaInicial extends Tela{
     this.setVisible(true);
   }
 
-  void setBody(){
+  public void setBody(){
     Botao bSubmeter = new Botao("Submeter");
     Botao bTabelasSalvas = new Botao("Minhas tabelas");
     Botao bInstrucoes = new Botao("Instruções");
