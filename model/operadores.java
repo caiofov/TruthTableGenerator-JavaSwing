@@ -1,3 +1,5 @@
+package valoracao.model;
+
 interface operadores{
   //essa interface apenas guarda umas constantes
 

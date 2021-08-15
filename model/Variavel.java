@@ -1,3 +1,5 @@
+package valoracao.model;
+
 import java.io.Serializable;
 
 class Variavel extends Elemento implements Serializable {

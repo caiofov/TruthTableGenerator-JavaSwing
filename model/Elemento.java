@@ -1,5 +1,6 @@
+package valoracao.model;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.io.Serializable;
 
 public class Elemento implements Serializable { //essa classe sera basicamente os caracteres da expressao completa

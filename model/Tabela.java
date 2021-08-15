@@ -1,3 +1,5 @@
+package valoracao.model;
+
 import java.util.ArrayList;
 import java.io.Serializable;
 

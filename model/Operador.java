@@ -1,3 +1,5 @@
+package valoracao.model;
+
 class Operador extends Elemento{
   boolean operacao; //indica se é um operador mesmo (true) ou só parenteses (false)
   

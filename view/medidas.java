@@ -1,3 +1,5 @@
+package valoracao.view;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -6,8 +8,8 @@ interface medidas{
   
   //dimensões dos elementos
   //janela
-  int larguraJanela = 1200;
-  int alturaJanela = 650;
+  int larguraJanela = 600; //1200
+  int alturaJanela = 350; //650
   //tabela da tela de valoração
   int larguraTabelaPrincipal = 230;
   int alturaTabelaPrincipal = 100;

@@ -1,3 +1,5 @@
+package valoracao.view;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -61,7 +63,7 @@ class TelaValoracao extends Tela{
   void addTabela(){
     this.tabelaDisplay = new TabelaDisplay(this.tabelaAtual); 
 
-    this.tabelaDisplay.setPreferredSize(new Dimension(medidas.larguraTabelaPrincipal, medidas.alturaTabelaPrincipal)); //setta as dimensões do scrollpane, onde está a tabela
+    this.tabelaDisplay.display.setPreferredSize(new Dimension(medidas.larguraTabelaPrincipal, medidas.alturaTabelaPrincipal)); //setta as dimensões do scrollpane, onde está a tabela
 
     this.body.add(this.tabelaDisplay);
   }

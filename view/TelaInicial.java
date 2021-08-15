@@ -1,11 +1,17 @@
+package valoracao.view;
+
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.BorderFactory;
 
 
 class TelaInicial extends Tela{
@@ -44,37 +50,41 @@ class TelaInicial extends Tela{
     bTabelasSalvas.setAlignmentX(Component.CENTER_ALIGNMENT);
     bInstrucoes.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-    bSubmeter.addActionListener(new ActionListener() {
+    bSubmeter.addActionListener(new ActionListener() { //se o botao for pressionado
       
       public void actionPerformed(ActionEvent e){
         
         ExpressaoCompleta expressao = new ExpressaoCompleta(input.getText());
-        Tabela tabela = new Tabela(expressao);
         
-        new Resolver(expressao, tabela);
-        new TelaValoracao(tabela);
-        dispose();
-        System.out.println("Submetendo a expressão...");
-        //existe a opção de colocar uma barra de progresso também
+        // if(!(expressao.isValida())){ //caso a expressao não seja válida
+        //   input.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
+        //   //FALTA: adicionar mensagem de erro embaixo do input
+        // }
+        // else{ //caso a expressão seja válida
+          Tabela tabela = new Tabela(expressao);
+        
+          new Resolver(expressao, tabela);
+          new TelaValoracao(tabela); //abre a tela de valoração
+          dispose();
+          System.out.println("Submetendo a expressão...");
+          //existe a opção de colocar uma barra de progresso também
+        // }
       }
-
-      
-    
     });
 
-    bTabelasSalvas.addActionListener(new ActionListener() {
+    bTabelasSalvas.addActionListener(new ActionListener() { //se o botao for pressionado
       public void actionPerformed(ActionEvent e){
         System.out.println("Carregando tabelas salvas...");
-        new TelaTabelasSalvas();
+        new TelaTabelasSalvas(); //abre a tela de tabelas salvas
         dispose();
       }
     
     });
     
-    bInstrucoes.addActionListener(new ActionListener() {
+    bInstrucoes.addActionListener(new ActionListener() { //se o botao for pressionado
       public void actionPerformed(ActionEvent e){
         System.out.println("Indo para instruções...");
-        new TelaInstrucoes();
+        new TelaInstrucoes(); //abre a tela de instruções
         dispose();
         //existe a opção de colocar uma barra de progresso também
       }

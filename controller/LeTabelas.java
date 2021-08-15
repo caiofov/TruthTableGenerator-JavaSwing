@@ -1,3 +1,5 @@
+package valoracao.controller;
+
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,4 +46,9 @@ public class LeTabelas {
 	ArrayList<Tabela> getLista () {
 		return this.listaTabs;
 	}
+
+  public void setListaTabs(ArrayList<Tabela> listaTabs) {
+    this.listaTabs = listaTabs;
+  }
+        
 }

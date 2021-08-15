@@ -1,18 +1,36 @@
+package valoracao.controller;
+
 import java.util.ArrayList;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.BoxLayout;
 
-class TabelaDisplay extends JScrollPane{
+class TabelaDisplay extends JPanel{
   Tabela tabela;
   JTable display;
   String[] cabecalho;
   Integer[][] linhas;
+  JLabel titulo;
+  JScrollPane body;
 
 
   TabelaDisplay(){}
   TabelaDisplay(Tabela tabela){
     this.setTabela(tabela);
+    this.setLayout(new BoxLayout (this, BoxLayout.Y_AXIS));
+    this.add(this.body);
   }
+
+  TabelaDisplay(Tabela tabela, String titulo){
+    this.setTitulo(titulo);
+    this.setTabela(tabela);
+    this.setLayout(new BoxLayout (this, BoxLayout.Y_AXIS));
+    this.add(this.body);
+
+  }
+
   TabelaDisplay(Integer[][] linhas, String[] cabecalho){
     this.setCabecalho(cabecalho);
     this.setLinhas(linhas);
@@ -42,13 +60,13 @@ class TabelaDisplay extends JScrollPane{
     this.display.setRowSelectionAllowed(false); //remove a possibilidade de selecionar as células
     // this.display.setFillsViewportHeight(true); //preenche todo o container
     
-    this.getViewport().add(this.display); //adiciona a tabela ao JScrollPane
+    this.body = new JScrollPane(this.display); //adiciona a tabela ao JScrollPane
   }
 
-
-
-
-
+  void setTitulo(String tit){
+    this.titulo = new JLabel(tit);
+    this.add(this.titulo);
+  }
 
 
   private void transformarArrayList(){

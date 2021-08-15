@@ -1,3 +1,5 @@
+package valoracao.view;
+
 import java.awt.FlowLayout;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -11,7 +13,7 @@ public class Footer extends JPanel {
     Footer(){
         
         //redimensionando imagem UFC
-        ImageIcon ufcIcon = new ImageIcon("img/ufchorizontal.png");
+        ImageIcon ufcIcon = new ImageIcon("assets/ufchorizontal.png");
         Image ufcImg = ufcIcon.getImage();
         Image newUfcImg = ufcImg.getScaledInstance(200, 50,  java.awt.Image.SCALE_SMOOTH);
         ufcIcon = new ImageIcon(newUfcImg);

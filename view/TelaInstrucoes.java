@@ -1,3 +1,5 @@
+package valoracao.view;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
@@ -36,7 +38,10 @@ public class TelaInstrucoes extends Tela {
     }
 
     void adicionarInstrucoes(){
-        JLabel instrucoes = new JLabel("1.Aaa\n2.bbbb\n3.ccc");
-        this.body.add(instrucoes);
+        this.body.add(new JLabel("1. Insira a expressão desejada na página inicial"));
+        this.body.add(new JLabel("2. Submeta a expressão para gerar a tabela"));
+        this.body.add(new JLabel("3. Você tem a  possibilidade de salvar a tabela gerada clicando na opção “salvar”"));
+        this.body.add(new JLabel("4. Para inserir uma nova expressão, clique em “voltar”"));
+        this.body.add(new JLabel("5. Caso a expressão seja inválida, verifique se ela segue o padrão de expressões lógicas"));
     }
 }
