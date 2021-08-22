@@ -40,20 +40,20 @@ public class ExpressaoCompleta implements Serializable {
         this.variaveis.add(novaVariavel);        
       }
       
-      /*else if(!isLetra){
-        if (s.equals('(')){
-          this.elementos.add(operadores.ABRIR);
-        }
-        else if (s.equals(')')){
-          this.elementos.add(operadores.FECHAR);
-        }
-        else if (s.equals('*')){
-          this.elementos.add(operadores.AND);
-        }
-        else if (s.equals('+')){
-          this.elementos.add(operadores.OR);
-        }
-      }*/
+      // else if(!isLetra){
+      //   if (s.equals('(')){
+      //     this.elementos.add(operadores.ABRIR);
+      //   }
+      //   else if (s.equals(')')){
+      //     this.elementos.add(operadores.FECHAR);
+      //   }
+      //   else if (s.equals('*')){
+      //     this.elementos.add(operadores.AND);
+      //   }
+      //   else if (s.equals('+')){
+      //     this.elementos.add(operadores.OR);
+      //   }
+      // }
     }
   }
 
@@ -78,7 +78,7 @@ public class ExpressaoCompleta implements Serializable {
     return (c>='A' && c<='Z');
   }
 
-  boolean isValida(){ //verifica se a expressão é válida
+  public boolean isValida(){ //verifica se a expressão é válida
     int len;
     len = this.expressaoString.length();
     int contLetra = 0, contProp = 0,contParenteses = 0;

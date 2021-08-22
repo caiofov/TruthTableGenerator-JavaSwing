@@ -11,7 +11,7 @@ public class Resolver{
   public Resolver (ExpressaoCompleta expressao, Tabela tabela) {
     this.expressao = expressao;
     this.tabela = tabela;
-    this.elementos = expressao.getElementos();
+    // this.elementos = expressao.getElementos();
     
     this.resolver();
   }
