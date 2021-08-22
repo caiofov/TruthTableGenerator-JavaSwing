@@ -8,7 +8,7 @@ public class ExpressaoCompleta implements Serializable {
  
   public char[] expressaoCharArray; //expressao como vetor
  
-  public ArrayList<Elemento> elementos = new ArrayList<Elemento>();
+  // public ArrayList<Elemento> elementos = new ArrayList<Elemento>();
   public ArrayList<String> variaveisString = new ArrayList<String>();
   public ArrayList<Elemento> variaveis = new ArrayList<Elemento>();
 
@@ -36,15 +36,11 @@ public class ExpressaoCompleta implements Serializable {
       
       if (isLetra && !this.variaveisString.contains(s)){
         Elemento novaVariavel = new Variavel(s);
-        this.elementos.add(novaVariavel);
-        this.variaveis.add(novaVariavel);
-
-        //this.variaveisString.add(s);
-        
+        // this.elementos.add(novaVariavel);
+        this.variaveis.add(novaVariavel);        
       }
       
-      else if(!isLetra){
-        //não consegui fazer o switch
+      /*else if(!isLetra){
         if (s.equals('(')){
           this.elementos.add(operadores.ABRIR);
         }
@@ -57,41 +53,31 @@ public class ExpressaoCompleta implements Serializable {
         else if (s.equals('+')){
           this.elementos.add(operadores.OR);
         }
-        // else if (s.equals('¬')){
-        //   this.elementos.add(operadores.NOT);
-        // }
-      }
+      }*/
     }
-
-
-    // Collections.sort(this.variaveisString, String.CASE_INSENSITIVE_ORDER); //organiza em ordem alfabética - não sei se vai ser necessário
   }
-
-
 
   public ArrayList<Elemento> getVariaveis(){
     return this.variaveis;
   }
-  public ArrayList<Elemento> getElementos(){
-    return this.elementos;
-  }
+
+  // public ArrayList<Elemento> getElementos(){
+  //   return this.elementos;
+  // }
 
   public String getExpressaoString(){
     return this.expressaoString;
   }
+
   public char[] getExpressaoCharArray(){
     return this.expressaoCharArray;
   }
-
-
 
   private boolean isLetra(char c){
     //considerando todas as letras maiusculas ja
     return (c>='A' && c<='Z');
   }
 
-
-  //FALTA FAZER - - -- -
   boolean isValida(){ //verifica se a expressão é válida
     int len;
     len = this.expressaoString.length();
@@ -164,9 +150,4 @@ public class ExpressaoCompleta implements Serializable {
   public void tratarExpressao(){ //trata a expressão, trocando os caracteres necessários
     this.expressaoString.toUpperCase(); //deixa todos os caracteres maiúsculos
   }
-  //faz a expressão posfixa (não é pra receber a expressão, é pra fazer mesmo) --> COMO ESTÁ AGORA É SÓ PRA TESTE
-  // void setExpressaoPosfixa(ArrayList<Elemento> pos){
-  //   this.expressaoPosfixa = pos;
-  // }
-
 }

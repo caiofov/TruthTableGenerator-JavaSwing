@@ -8,15 +8,17 @@ import java.util.ArrayList;
 
 import valoracao.model.Tabela;
 
-
 public class LeTabelas {
 
+	// Atributos:
 	public ArrayList<Tabela> listaTabs = new ArrayList<Tabela>();
 
-	public LeTabelas () {
-		File arquivo = new File("./tabelasSalvas.bin");
+	
+	public LeTabelas() {
+		File arquivo = new File("data/tabelasSalvas.bin");
 		FileInputStream fis = null;
 		ObjectInputStream in = null;
+		Tabela atual = null;
 
 		// Abrindo o arquivo:
 		try {
@@ -29,7 +31,11 @@ public class LeTabelas {
 		// Lendo o arquivo:
 		while (true) {
 			try {
-				this.listaTabs.add((Tabela) in.readObject());
+				atual = (Tabela) in.readObject();
+				if (atual == null) {
+					break;
+				}
+				this.listaTabs.add(atual);
 			} catch (EOFException e) {
 				break;
 			} catch (Exception e) {
@@ -45,12 +51,13 @@ public class LeTabelas {
 		}
 	}
 
+	// Retorna uma lista com as tabelas salvas
 	public ArrayList<Tabela> getLista () {
 		return this.listaTabs;
 	}
 
+	// Atribui a lista de tabelas
   public void setListaTabs(ArrayList<Tabela> listaTabs) {
     this.listaTabs = listaTabs;
   }
-        
 }

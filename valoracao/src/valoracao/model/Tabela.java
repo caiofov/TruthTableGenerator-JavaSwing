@@ -20,7 +20,7 @@ public class Tabela implements Serializable {
 
 
  
-  public void setNdois(){ //calcula 2^n (não consegui fazer usando operação comum do java)
+  public void setNdois(){ //calcula 2^n
     for(int i=0; i < this.num_variaveis; i++){
       this.ndois = this.ndois*2;
     }
@@ -28,8 +28,8 @@ public class Tabela implements Serializable {
 
   //inicializa a tabela
   public void inicializarCorpo(){
-    //adiciona as variáveis já como instância de Elemento ao "cabecalho" da tabela
-    //adiciona um novo array no array do corpo para cada loop, ou seja, para cada variável
+    // adiciona as variáveis já como instância de Elemento ao "cabecalho" da tabela
+    // adiciona um novo array no array do corpo para cada loop, ou seja, para cada variável
     for(Elemento var : this.expressaoCompleta.getVariaveis()){
       ArrayList<Integer> novoArray = new ArrayList<Integer>();
       this.corpo.add(novoArray);

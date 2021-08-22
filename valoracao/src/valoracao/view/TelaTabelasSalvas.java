@@ -8,8 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
 
 import valoracao.controller.LeTabelas;
+import valoracao.controller.ExcluirTabela;
 import valoracao.controller.TabelaDisplay;
 import valoracao.model.Tabela;
 
@@ -62,16 +64,17 @@ public class TelaTabelasSalvas extends Tela {
     
             public void actionPerformed(ActionEvent e){
                 LeTabelas leitor = new LeTabelas();
+								ArrayList<Tabela> lista = leitor.getLista();
                 
                 String num_tabela = (String)JOptionPane.showInputDialog(null, "Qual tabela deseja excluir? ", "Excluir Tabela", JOptionPane.QUESTION_MESSAGE, null, null, "Digite o número da tabela");
-                int x = Integer.parseInt(num_tabela);
-                leitor.getLista().remove(x);
-                
-                //TelaTabelasSalvas teste = new TelaTabelasSalvas();
-                //exibirTabelas();
-                //ArrayList<Tabela> x = leitor.getLista();
-                //leitor.setListaTabs() = x.remove(num_tabela);
-                
+                int x = Integer.parseInt(num_tabela) - 1;
+
+								ExcluirTabela exc = new ExcluirTabela(lista, x);
+								exc.excluirTab();
+								// ATUALIZAR A TELA DE TABELAS SALVAS...
+                TelaTabelasSalvas.this.dispose();
+                new TelaTabelasSalvas();
+
                 System.out.println("Abrindo opções de exclusão de tabela...");
             }
         });

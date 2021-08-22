@@ -12,15 +12,18 @@ import valoracao.model.Tabela;
 
 public class SalvarTabela {
 
+	// Atributos:
 	public Tabela tab;
 
+	// Construtor:
 	public SalvarTabela (Tabela tab) {
 		this.tab = tab;
 	}
 
+	// Método que salva a tabela no arquivo:
 	public void salvarTab () {
 		// Criando/abrindo o arquivo:
-		File arquivo = new File ("./tabelasSalvas.bin");
+		File arquivo = new File ("data/tabelasSalvas.bin");
 		boolean append = arquivo.exists();
 		FileOutputStream fos = null;
 		AppendableObjectOutputStream out = null;
@@ -48,6 +51,7 @@ public class SalvarTabela {
 	}
 }
 
+// Classe que herda ObjectOutputStream e implementa métodos que o tornam appendable:
 class AppendableObjectOutputStream extends ObjectOutputStream {
 
 	private boolean append;

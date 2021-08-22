@@ -1,5 +1,4 @@
 package valoracao;
-
 import valoracao.view.TelaInicial;
 
 class Main {

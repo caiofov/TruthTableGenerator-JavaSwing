@@ -11,18 +11,20 @@ Projeto da cadeira de Técnicas de Programação - UFC 2021.1
 No estudo da lógica computacional, a valoração de uma fórmula lógica mostra sua importância por ser uma das bases da computação. Este aplicativo visa auxiliar o estudo na área, gerando uma tabela verdade a partir de uma fórmula lógica. No sistema, o usuário poderá, também, salvar a tabela verdade ou excluí-la, de acordo com sua preferência.
 
 ### Modo de uso
-- Entrada: Para ter a entrada aceita, é preciso digitar a fórmula utilizando-se de até 5 proposições lógicas.
-- Seguir as instruções da Tela Instrução
+- Ir para o diretório "valoracao" onde se encontra o makefile;
+- Utilizar os comandos "make comp" para compilar o programa e "make run" para executá-los;
+- Entrada: Para ter a entrada aceita, é preciso digitar a fórmula utilizando-se de até 5 proposições lógicas;
+- Seguir as instruções da Tela Instrução.
 
 ### Operadores Lógicos
 | Operador lógico |  Caractere utilizado  |
 | ------------------- | ------------------- |
-|  OR |  + |
-| AND |  * |
+| OR  | + |
+| AND | * |
 | XOR | % |
 | IMP | > |
-| NAND | ^|
-|NOR | ´|
+| NAND | ^ |
+| NOR | ´ |
 
 
 > **Observação:** Nosso programa está funcionando, mas não conseguimos organizar os arquivo nas pastas. Caso necessário, tirar os arquivos e colocá-los no mesmo diretório. Dessa forma, o projeto irá rodar sem erros.

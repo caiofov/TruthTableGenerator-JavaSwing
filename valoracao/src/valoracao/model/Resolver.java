@@ -7,8 +7,8 @@ public class Resolver{
   Tabela tabela; //recebe a tabela
   ArrayList<Elemento> elementos; //elementos da expressao
   
-
-  public Resolver(ExpressaoCompleta expressao, Tabela tabela){
+	// Construtor:
+  public Resolver (ExpressaoCompleta expressao, Tabela tabela) {
     this.expressao = expressao;
     this.tabela = tabela;
     this.elementos = expressao.getElementos();
@@ -16,6 +16,7 @@ public class Resolver{
     this.resolver();
   }
 
+	// Método que resolve a expressão para cada combinação de valor dos elementos:
 	public void resolver() {
 		int nParenteses = 0, r, idx = 0;
 		ArrayList<Character> exp = new ArrayList<Character>();
@@ -91,6 +92,7 @@ public class Resolver{
 		tabela.adicionarValores(valores, tabela.num_variaveis);
 	}
 
+	// Método que é chamado para resolver cada pedaço da expressão completa:
 	public int resultado (ArrayList<Character> calculo, int linha) {
 		int v1, v2, pos1 = 0, pos2 = 0;
 		char op = calculo.get(1);
