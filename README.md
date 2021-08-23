@@ -34,5 +34,3 @@ No estudo da lógica computacional, a valoração de uma fórmula lógica mostra
 
 
 
-> **Observação:** Nosso programa está funcionando, mas não conseguimos organizar os arquivo nas pastas. Caso necessário, tirar os arquivos e colocá-los no mesmo diretório. Dessa forma, o projeto irá rodar sem erros.
-
