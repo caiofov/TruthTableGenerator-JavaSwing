@@ -5,13 +5,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import valoracao.controller.LeTabelas;
 import valoracao.controller.ExcluirTabela;
-import valoracao.controller.TabelaDisplay;
+import valoracao.view.TabelaDisplay;
 import valoracao.model.Tabela;
 
 
@@ -30,6 +31,8 @@ public class TelaTabelasSalvas extends Tela {
         this.adicionarBotoes();
         
         this.bodyTabelasScroll.getViewport().add(bodyTabelasPanel);
+        this.bodyTabelasScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
 
         this.body.add(this.bodyTabelasScroll);
         this.body.add(this.bodyPosTabelas);
@@ -63,8 +66,8 @@ public class TelaTabelasSalvas extends Tela {
     
             public void actionPerformed(ActionEvent e){
                 System.out.println("Abrindo opções de exclusão de tabela...");
-                LeTabelas leitor2 = new LeTabelas();
-				        ArrayList<Tabela> lista = leitor2.getLista();
+
+				        ArrayList<Tabela> lista = leitor.getLista();
                 
                 String num_tabela = (String)JOptionPane.showInputDialog(null, "Qual tabela deseja excluir? ", "Excluir Tabela", JOptionPane.QUESTION_MESSAGE, null, null, "Digite o número da tabela");
                 
@@ -80,12 +83,11 @@ public class TelaTabelasSalvas extends Tela {
                     
                     // ATUALIZAR A TELA DE TABELAS SALVAS...
                     leitor = new LeTabelas();
-                    bodyTabelasPanel.revalidate();
-                    bodyTabelasPanel.repaint();
-                    // TelaTabelasSalvas.this.dispose();
-                    // new TelaTabelasSalvas();
+                    //bodyTabelasPanel.revalidate();
+                    //bodyTabelasPanel.repaint();
+                    TelaTabelasSalvas.this.dispose();
+                    new TelaTabelasSalvas();
                 }
-                
             }
         });
 
@@ -98,14 +100,22 @@ public class TelaTabelasSalvas extends Tela {
 
         ArrayList<Tabela> listaTabelas = leitor.getLista();
         int count=1;
-        
-        for (Tabela tabela : listaTabelas) {
-            TabelaDisplay tabView = new TabelaDisplay(tabela, "Tabela"+count);
-            // JPane areaTabela
+
+        if(listaTabelas.size()==0){
+          this.bodyTabelasPanel.add(new JLabel("Não há tabelas a exibir"));
+        }
+        else{
+          for (Tabela tabela : listaTabelas) {
+            System.out.println(" - - - Tabela "+count+" :");
+            tabela.mostrar();
+            TabelaDisplay tabView = new TabelaDisplay(tabela, "Tabela "+count);
+
             this.bodyTabelasPanel.add(tabView);
 
             count++;
+          }
         }
+        
         
     }
 

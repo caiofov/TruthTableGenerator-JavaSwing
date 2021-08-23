@@ -12,7 +12,6 @@ public class LeTabelas {
 
 	// Atributos:
 	public ArrayList<Tabela> listaTabs = new ArrayList<Tabela>();
-
 	
 	public LeTabelas() {
 		File arquivo = new File("data/tabelasSalvas.bin");

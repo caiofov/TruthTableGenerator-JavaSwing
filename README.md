@@ -10,6 +10,12 @@ Projeto da cadeira de Técnicas de Programação - UFC 2021.1
 ### Objetivo
 No estudo da lógica computacional, a valoração de uma fórmula lógica mostra sua importância por ser uma das bases da computação. Este aplicativo visa auxiliar o estudo na área, gerando uma tabela verdade a partir de uma fórmula lógica. No sistema, o usuário poderá, também, salvar a tabela verdade ou excluí-la, de acordo com sua preferência.
 
+### Funções
+- Criação de tabelas verdade
+- Validação de entrada (quantidade de proposições possíveis <= 5)
+- Salvar ou excluir uma tabela verdade
+- Mostrar tabelas salvas
+
 ### Modo de uso
 - Ir para o diretório "valoracao" onde se encontra o makefile;
 - Utilizar os comandos "make comp" para compilar o programa e "make run" para executá-los;
@@ -25,6 +31,7 @@ No estudo da lógica computacional, a valoração de uma fórmula lógica mostra
 | IMP | > |
 | NAND | ^ |
 | NOR | ´ |
+
 
 
 > **Observação:** Nosso programa está funcionando, mas não conseguimos organizar os arquivo nas pastas. Caso necessário, tirar os arquivos e colocá-los no mesmo diretório. Dessa forma, o projeto irá rodar sem erros.
