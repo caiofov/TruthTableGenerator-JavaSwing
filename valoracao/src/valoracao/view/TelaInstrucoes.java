@@ -3,12 +3,17 @@ package valoracao.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JLabel;
+import javax.swing.BoxLayout;
+
 
 public class TelaInstrucoes extends Tela {
     
     
     public TelaInstrucoes(){
         this.setTitulo("Instruções");
+        
+        this.body.setLayout(new BoxLayout (this.body, BoxLayout.Y_AXIS));
+
         
         this.adicionarInstrucoes();
         this.adicionarBotoes();

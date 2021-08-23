@@ -20,6 +20,7 @@ import valoracao.view.TelaValoracao;
 public class TelaInicial extends Tela{
   JTextField input;
   JPanel bodyTop, bodyLeft, bodyRight, bodyBottom;
+  boolean temMensagemError = false;
 
   public TelaInicial(){
     this.bodyTop = new JPanel();
@@ -104,12 +105,16 @@ public class TelaInicial extends Tela{
         if(!(expressao.isValida())){ //caso a expressao não seja válida
           input.setBorder(BorderFactory.createLineBorder(Color.RED, 3));
           
-          JLabel mensagemError = new JLabel("Insira uma expressão válida");
-          mensagemError.setForeground(Color.RED);
+          if (!(temMensagemError)){
+            JLabel mensagemError = new JLabel("Insira uma expressão válida");
+            mensagemError.setForeground(Color.RED);
           
-          inputPanel.add(mensagemError);
+            inputPanel.add(mensagemError);
+            temMensagemError = true;
+          }
           inputPanel.revalidate();
           inputPanel.repaint();
+          
         }
         else{ //caso a expressão seja válida
           Tabela tabela = new Tabela(expressao);

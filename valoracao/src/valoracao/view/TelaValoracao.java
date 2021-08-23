@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import valoracao.controller.SalvarTabela;
 import valoracao.controller.TabelaDisplay;
@@ -19,7 +20,9 @@ import javax.swing.JOptionPane;
 
 class TelaValoracao extends Tela{
   TabelaDisplay tabelaDisplay;
+  JScrollPane tabelaScroll;
   Tabela tabelaAtual;
+
   String expressao;
   boolean tabelaSalva = false; //diz se a tabela já foi salva (para controlar se o popup aparece ou nao)
   JPanel body, bodyPreTabela, bodyPosTabela;
@@ -66,11 +69,12 @@ class TelaValoracao extends Tela{
   }
 
   public void addTabela(){
-    this.tabelaDisplay = new TabelaDisplay(this.tabelaAtual); 
+    this.tabelaDisplay = new TabelaDisplay(this.tabelaAtual);
+    this.tabelaScroll = this.tabelaDisplay.body;
 
-    this.tabelaDisplay.display.setPreferredSize(new Dimension(medidas.larguraTabelaPrincipal, medidas.alturaTabelaPrincipal)); //setta as dimensões do scrollpane, onde está a tabela
+    // this.tabelaScroll.display.setPreferredSize(new Dimension(medidas.larguraTabelaPrincipal, medidas.alturaTabelaPrincipal)); //setta as dimensões do scrollpane, onde está a tabela
 
-    this.body.add(this.tabelaDisplay);
+    this.body.add(this.tabelaScroll);
   }
 
   public void addBotoes(){

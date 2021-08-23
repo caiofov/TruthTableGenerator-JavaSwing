@@ -64,7 +64,7 @@ public class TelaTabelasSalvas extends Tela {
             public void actionPerformed(ActionEvent e){
                 System.out.println("Abrindo opções de exclusão de tabela...");
                 LeTabelas leitor2 = new LeTabelas();
-				ArrayList<Tabela> lista = leitor2.getLista();
+				        ArrayList<Tabela> lista = leitor2.getLista();
                 
                 String num_tabela = (String)JOptionPane.showInputDialog(null, "Qual tabela deseja excluir? ", "Excluir Tabela", JOptionPane.QUESTION_MESSAGE, null, null, "Digite o número da tabela");
                 

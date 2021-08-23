@@ -99,27 +99,37 @@ public class ExpressaoCompleta implements Serializable {
         contProp = contProp + 1;
       }
       
-      //Aqui ele verifica se o caractere anterior a um parentese é do tipo + * % > ^´
+      //Aqui ele verifica se o caractere anterior e posterior a um parentese é do tipo + * % > ^´
       else if ((this.expressaoString.charAt(i) == '(')){
         contParenteses = contParenteses + 1;
 
-        if ((this.expressaoString.charAt(i-1) != '+') || (this.expressaoString.charAt(i-1) != '*') || (this.expressaoString.charAt(i-1) != '%') || (this.expressaoString.charAt(i-1) != '>') || (this.expressaoString.charAt(i-1) != '^') || (this.expressaoString.charAt(i-1) != '´')) {
-          return false;
+        if (i>0){
+          if ((this.expressaoString.charAt(i-1) != '+') && (this.expressaoString.charAt(i-1) != '*') && (this.expressaoString.charAt(i-1) != '%') && (this.expressaoString.charAt(i-1) != '>') && (this.expressaoString.charAt(i-1) != '^') && (this.expressaoString.charAt(i-1) != '´')) {
+            return false;
+          }
         }
         if ((this.expressaoString.charAt(i+1) == '+') || (this.expressaoString.charAt(i+1) == '*') || (this.expressaoString.charAt(i+1) == '%') || (this.expressaoString.charAt(i+1) == '>') || (this.expressaoString.charAt(i+1) == '^') || (this.expressaoString.charAt(i+1) == '´')) {
           return false;
+        }
       }
 
-      else if ((this.expressaoString.charAt(i) == ')')){
+      else if ((this.expressaoString.charAt(i) == ')') ){
         contParenteses = contParenteses - 1;
-
-        if ((this.expressaoString.charAt(i-1) == '+') || (this.expressaoString.charAt(i-1) == '*') || (this.expressaoString.charAt(i-1) == '%') || (this.expressaoString.charAt(i-1) == '>') || (this.expressaoString.charAt(i-1) == '^') || (this.expressaoString.charAt(i-1) == '´')) {
+        if (contParenteses < 0){
           return false;
         }
-        if ((this.expressaoString.charAt(i+1) == '+') || (this.expressaoString.charAt(i+1) == '*') || (this.expressaoString.charAt(i+1) == '%') || (this.expressaoString.charAt(i+1) == '>') || (this.expressaoString.charAt(i+1) == '^') || (this.expressaoString.charAt(i+1) == '´')) {
+        
+        if ((this.expressaoString.charAt(i-1) == '+') && (this.expressaoString.charAt(i-1) == '*') && (this.expressaoString.charAt(i-1) == '%') && (this.expressaoString.charAt(i-1) == '>') && (this.expressaoString.charAt(i-1) == '^') && (this.expressaoString.charAt(i-1) == '´')) {
           return false;
         }
 
+        // Essa condição se fez necessária para evitar que ele checasse além do tamanho da String
+        if (i < len-1){
+          if ((this.expressaoString.charAt(i+1) != '+') && (this.expressaoString.charAt(i+1) != '*') && (this.expressaoString.charAt(i+1) != '%') && (this.expressaoString.charAt(i+1) != '>') && (this.expressaoString.charAt(i+1) != '^') && (this.expressaoString.charAt(i+1) != '´')) {
+            return false;
+          
+          }
+        }
       }
       // Se não for do formato especificado (letras ou + * % > ^´()), falhará
       else{
@@ -128,22 +138,23 @@ public class ExpressaoCompleta implements Serializable {
     }
 
       // Aqui ele verifica se os parenteses estão em quantidade certa, abrindo e fechando
-      if (contParenteses != 0){
-        return false;
-      }
-     
+    if (contParenteses != 0){
+      return false;
     }
+     
+    
     // Aqui ele vai verificar se a quantidade de Letras é 1 a mais que a de proposições, como em A+B+C, temos 3 letras e 2 proposições.
     
     if (contLetra != (contProp +1)){
       return false;
     }
-    // Tem 
+    // Se tem mais de 5 Proposições (especificado nas instruções)
     if (contProp > 5){
       return false;
     }
+    // Se todas condições passarem, voltar verdadeiro
     else {
-      return false;
+      return true;
     }
   }
   

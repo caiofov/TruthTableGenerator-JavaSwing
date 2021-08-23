@@ -8,8 +8,8 @@ interface medidas{
   
   //dimensões dos elementos
   //janela
-  public int larguraJanela = 1200;
-  public int alturaJanela = 650; 
+  public int larguraJanela = 600;
+  public int alturaJanela = 350; 
   //tabela da tela de valoração
   public int larguraTabelaPrincipal = 230;
   public int alturaTabelaPrincipal = 100;
