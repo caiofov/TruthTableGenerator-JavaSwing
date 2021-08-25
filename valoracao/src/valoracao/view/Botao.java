@@ -12,8 +12,8 @@ class Botao extends JButton{
     
     this.setText(label);
 
-    this.setBackground(medidas.corCinza);
-    this.setForeground(medidas.corBranca);
+    this.setBackground(medidas.corBotao);
+    this.setForeground(medidas.corTexto);
     this.setFont(medidas.fonteBotoes);
 
     this.setBorderPainted(false); //tira a borda
@@ -23,8 +23,8 @@ class Botao extends JButton{
 
       //quando o mouse estiver por cima, irá mudar a cor
       public void mouseEntered(MouseEvent evt) {
-        setBackground(medidas.corBranca);
-        setForeground(medidas.corPreta);
+        setBackground(medidas.corBotaoHover);
+        // setForeground(medidas.corPreta);
         new Cursor(Cursor.HAND_CURSOR);
 
         // setBorderPainted(true); //adicionar borda
@@ -38,8 +38,8 @@ class Botao extends JButton{
      
       //quando o mouse sair, volta para as configurações iniciais
       public void mouseExited(MouseEvent evt) {
-        setBackground(medidas.corCinza);
-        setForeground(medidas.corBranca);
+        setBackground(medidas.corBotao);
+        // setForeground(medidas.corBranca);
         setBorderPainted(false);
       }
     });

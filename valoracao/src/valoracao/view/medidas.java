@@ -15,16 +15,21 @@ interface medidas{
   public int alturaTabelaPrincipal = 100;
 
   //posição de quando é aberto uma janela
-  public int localXJanela = 50;
-  public int localYJanela = 50;
+  public int localXJanela = 400;
+  public int localYJanela = 200;
 
   //nome para os frames
   public String nome = "Trabalho Final";
 
   //cores
-  public Color corCinza = new Color(124,124,124);
-  public Color corBranca = new Color(255,255,255);
-  public Color corPreta = new Color(37,37,37);
+  // public Color corCinza = new Color(124,124,124);
+  // public Color corBranca = new Color(255,255,255);
+  // public Color corPreta = new Color(37,37,37);
+
+  public Color corTexto = new Color(38,1,1);
+  public Color corTitulo = new Color(191,54,4);
+  public Color corBotao = new Color(217, 123, 41);
+  public Color corBotaoHover = new Color(242, 158, 109);
 
   //fontes
   public Font fonteTitulos = new Font("Verdana", Font.BOLD, 23);

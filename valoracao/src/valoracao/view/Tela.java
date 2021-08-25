@@ -22,9 +22,11 @@ public class Tela extends JFrame{
 
     public void setTitulo(String texto){
         this.titulo.setText(texto);
-        titulo.setFont(medidas.fonteTitulos);
-        titulo.setAlignmentX(CENTER_ALIGNMENT);
-        this.header.add(titulo);    
+        this.titulo.setFont(medidas.fonteTitulos);
+        this.titulo.setAlignmentX(CENTER_ALIGNMENT);
+        this.titulo.setForeground(medidas.corTitulo); 
+        this.header.add(titulo);
+        
     }
 
     public void mostrarLayoutPrincipal(){ //para testes
