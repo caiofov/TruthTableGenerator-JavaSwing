@@ -85,9 +85,6 @@ public class TelaTabelasSalvas extends Tela {
             String expressao = tabela.getCabecalho().get(tam - 1).getNome();
             TabelaDisplay tabView = new TabelaDisplay(tabela, "Tabela "+ count + " : " + expressao);
 
-            int tabHeight = tabela.ndois * 27;
-            if (tabHeight > 200){tabHeight = 200;}
-            tabView.setPreferredSize(new Dimension(250, tabHeight));
             this.bodyTabelasPanel.add(tabView);
 
             count++;

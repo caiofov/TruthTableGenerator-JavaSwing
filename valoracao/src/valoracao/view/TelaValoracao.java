@@ -46,7 +46,7 @@ class TelaValoracao extends Tela{
 
     this.body.setLayout(new BoxLayout (this.body, BoxLayout.Y_AXIS));
 
-    this.add(titulo);
+    this.add(this.header);
     this.add(this.body);
     
     this.setVisible(true);
@@ -55,8 +55,8 @@ class TelaValoracao extends Tela{
   public void addTextos(String expressao){
     this.bodyPreTabela.setLayout(new BoxLayout (this.bodyPreTabela, BoxLayout.Y_AXIS));
     
-    JLabel texto1 = new JLabel("Expressao: " + expressao);
-    JLabel texto2 = new JLabel("Tabela: ");
+    LabelPadrao texto1 = new LabelPadrao("Expressao: " + expressao);
+    LabelPadrao texto2 = new LabelPadrao("Tabela: ");
     texto1.setFont(medidas.fonteTextos);
     texto2.setFont(medidas.fonteTextos);
 
@@ -70,8 +70,6 @@ class TelaValoracao extends Tela{
   public void addTabela(){
     this.tabelaDisplay = new TabelaDisplay(this.tabelaAtual);
     this.tabelaScroll = this.tabelaDisplay.body;
-
-    // this.tabelaScroll.display.setPreferredSize(new Dimension(medidas.larguraTabelaPrincipal, medidas.alturaTabelaPrincipal)); //setta as dimensões do scrollpane, onde está a tabela
 
     this.body.add(this.tabelaScroll);
   }
