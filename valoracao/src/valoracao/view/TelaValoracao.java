@@ -1,19 +1,25 @@
 package valoracao.view;
 
+import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
 
 import valoracao.controller.SalvarTabela;
 import valoracao.controller.TabelaDisplay;
 import valoracao.model.Tabela;
 
-import javax.swing.JOptionPane;
 
 
 
@@ -119,10 +125,37 @@ class TelaValoracao extends Tela{
   
     });
 
+    Botao bBaixar = new Botao("Baixar");
+
+    bBaixar.addActionListener(new ActionListener() {
+    
+      public void actionPerformed(ActionEvent e){
+
+        JScrollPane teste = TelaValoracao.tabelaScroll;
+        
+        salvarImagem(teste);
+
+        JOptionPane.showMessageDialog(null, "Download concluído.", "Concluído!", JOptionPane.INFORMATION_MESSAGE);
+
+      }
+  
+    });
+
     this.bodyPosTabela.add(bVoltar);
     this.bodyPosTabela.add(bSalvar);
+    this.bodyPosTabela.add(bBaixar);
 
     this.body.add(bodyPosTabela);
+  }
+  private void salvarImagem(JScrollPane componente) {
+    try {
+      BufferedImage imagem = new BufferedImage(componente.getWidth(), componente.getHeight(), BufferedImage.TYPE_INT_RGB);
+      componente.paintAll(imagem.getGraphics());
+      ImageIO.write(imagem, "png", new File ("data/Tabela.png"));
+    } 
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   private void mostrarLayout(){
