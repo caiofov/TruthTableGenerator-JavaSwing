@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Tela extends JFrame{
-    JPanel footer = new Footer();
+    // JPanel footer = new Footer();
     JPanel header = new JPanel();
     JPanel body = new JPanel();
     JLabel titulo = new JLabel();
@@ -32,7 +32,5 @@ public class Tela extends JFrame{
     public void mostrarLayoutPrincipal(){ //para testes
         this.body.setBorder(BorderFactory.createTitledBorder("Body"));
         this.header.setBorder(BorderFactory.createTitledBorder("Header"));
-        this.footer.setBorder(BorderFactory.createTitledBorder("Footer"));
-
     }
 }

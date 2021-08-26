@@ -15,6 +15,7 @@ import valoracao.model.ExpressaoCompleta;
 import valoracao.model.Resolver;
 import valoracao.model.Tabela;
 import valoracao.view.TelaValoracao;
+import valoracao.view.LabelPadrao;
 
 
 public class TelaInicial extends Tela{
@@ -35,9 +36,8 @@ public class TelaInicial extends Tela{
     this.add(this.header);
     this.setBody();
     this.add(this.body);
-    this.add(this.footer);
 
-    //this.mostrarLayout(); //para testes
+    // this.mostrarLayout(); //para testes
     
     this.setVisible(true);
   }
@@ -62,10 +62,11 @@ public class TelaInicial extends Tela{
     this.bodyLeft.add(inputPanel);
     this.bodyLeft.add(bSubmeter);
     this.bodyLeft.setAlignmentX(Component.LEFT_ALIGNMENT);
+    this.bodyLeft.setForeground(medidas.corTexto);
     
 
     //BODY RIGHT - - 
-    JLabel textBodyRight = new JLabel("Ver tabelas salvas");
+    LabelPadrao textBodyRight = new LabelPadrao("Ver tabelas salvas");
     textBodyRight.setFont(medidas.fonteTextos);
     textBodyRight.setAlignmentX(Component.CENTER_ALIGNMENT);
     
@@ -75,7 +76,7 @@ public class TelaInicial extends Tela{
     this.bodyRight.setAlignmentX(Component.RIGHT_ALIGNMENT);
     
     // BODY BOTTOM - - - -
-    JLabel textBodyBottom = new JLabel("Em dúvida? Veja como funciona!");
+    LabelPadrao textBodyBottom = new LabelPadrao("Em dúvida? Veja como funciona!");
     textBodyBottom.setAlignmentX(Component.CENTER_ALIGNMENT);
     textBodyBottom.setFont(medidas.fonteTextos);
     this.bodyBottom.add(textBodyBottom);

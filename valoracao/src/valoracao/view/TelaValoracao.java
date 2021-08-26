@@ -48,7 +48,6 @@ class TelaValoracao extends Tela{
 
     this.add(titulo);
     this.add(this.body);
-    this.add(new Footer());
     
     this.setVisible(true);
   }

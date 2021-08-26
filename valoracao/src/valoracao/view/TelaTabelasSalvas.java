@@ -39,9 +39,7 @@ public class TelaTabelasSalvas extends Tela {
         
         this.add(this.header);
         this.add(this.body);
-        this.add(this.footer);
         
-        //this.mostrarLayout(); //para testes
         this.body.setLayout(new BoxLayout(this.body, BoxLayout.Y_AXIS ));
         this.setVisible(true);
     }

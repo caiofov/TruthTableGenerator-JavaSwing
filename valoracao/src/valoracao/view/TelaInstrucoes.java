@@ -2,8 +2,9 @@ package valoracao.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JLabel;
 import javax.swing.BoxLayout;
+
+import valoracao.view.LabelPadrao;
 
 
 public class TelaInstrucoes extends Tela {
@@ -20,7 +21,6 @@ public class TelaInstrucoes extends Tela {
 
         this.add(this.header);
         this.add(this.body);
-        this.add(this.footer);
 
         this.setVisible(true);
 
@@ -42,10 +42,10 @@ public class TelaInstrucoes extends Tela {
     }
 
     public void adicionarInstrucoes(){
-        this.body.add(new JLabel("1. Insira a expressão desejada na página inicial"));
-        this.body.add(new JLabel("2. Submeta a expressão para gerar a tabela"));
-        this.body.add(new JLabel("3. Você tem a  possibilidade de salvar a tabela gerada clicando na opção “salvar”"));
-        this.body.add(new JLabel("4. Para inserir uma nova expressão, clique em “voltar”"));
-        this.body.add(new JLabel("5. Caso a expressão seja inválida, verifique se ela segue o padrão de expressões lógicas"));
+        this.body.add(new LabelPadrao("1. Insira a expressão desejada na página inicial"));
+        this.body.add(new LabelPadrao("2. Submeta a expressão para gerar a tabela"));
+        this.body.add(new LabelPadrao("3. Você tem a  possibilidade de salvar a tabela gerada clicando na opção “salvar”"));
+        this.body.add(new LabelPadrao("4. Para inserir uma nova expressão, clique em “voltar”"));
+        this.body.add(new LabelPadrao("5. Caso a expressão seja inválida, verifique se ela segue o padrão de expressões lógicas"));
     }
 }
