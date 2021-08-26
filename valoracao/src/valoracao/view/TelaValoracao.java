@@ -59,17 +59,6 @@ class TelaValoracao extends Tela{
     
     this.setVisible(true);
   }
-
-	private void salvarImagem(JScrollPane componente) {
-    try {
-      BufferedImage imagem = new BufferedImage(componente.getWidth(), componente.getHeight(), BufferedImage.TYPE_INT_RGB);
-      componente.paintAll(imagem.getGraphics());
-      ImageIO.write(imagem, "png", new File ("valoracao/data/Tabela.png"));
-    } 
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
   
   public void addTextos(String expressao){
     this.bodyPreTabela.setLayout(new BoxLayout (this.bodyPreTabela, BoxLayout.Y_AXIS));
@@ -159,6 +148,16 @@ class TelaValoracao extends Tela{
     this.bodyPosTabela.add(bBaixar);
 
     this.body.add(bodyPosTabela);
+  }
+  private void salvarImagem(JScrollPane componente) {
+    try {
+      BufferedImage imagem = new BufferedImage(componente.getWidth(), componente.getHeight(), BufferedImage.TYPE_INT_RGB);
+      componente.paintAll(imagem.getGraphics());
+      ImageIO.write(imagem, "png", new File ("data/Tabela.png"));
+    } 
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   private void mostrarLayout(){
