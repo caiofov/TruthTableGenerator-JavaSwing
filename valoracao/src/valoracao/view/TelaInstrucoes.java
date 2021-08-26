@@ -30,14 +30,9 @@ public class TelaInstrucoes extends Tela {
         this.bodyTop.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.bodyBottom.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        
-        this.body.add(this.bodyTop);
-        this.body.add(this.bodyBottom);
-        // this.body.setLayout(new BoxLayout (this.body, BoxLayout.Y_AXIS));
-        // this.body.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.bodyBottom.add(Box.createRigidArea(new Dimension(0, 20))); //distância de 20px da borda de baixo
         
         this.add(this.header);
-        // this.add(this.body);
         this.add(bodyTop);
         this.add(bodyBottom);
 

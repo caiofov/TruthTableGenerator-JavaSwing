@@ -32,5 +32,5 @@ interface medidas{
   //fontes
   public Font fonteTitulos = new Font("Verdana", Font.BOLD, 23);
   public Font fonteTextos = new Font("Arial", Font.PLAIN, 18);
-  public Font fonteBotoes = new Font("Verdana", Font.PLAIN, 14);
+  public Font fonteBotoes = new Font("Courier", Font.PLAIN, 14);
 }
