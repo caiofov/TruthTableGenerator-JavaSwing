@@ -25,7 +25,7 @@ public class ExcluirTabela {
 		listaTabs.remove(index);
 
 		// Abrindo o arquivo:
-		File arquivo = new File ("data/tabelasSalvas.bin");
+		File arquivo = new File ("valoracao/data/tabelasSalvas.bin");
 		FileOutputStream fos = null;
 		ObjectOutputStream out = null;
 
@@ -36,15 +36,20 @@ public class ExcluirTabela {
 			e.printStackTrace();
 		}
 
+		if (out == null) {
+			System.out.println("Path para o arquivo tabelasSalvas está incorreto!");
+			return;
+		}
+
 		// Escrevendo no arquivo:
 		ListIterator<Tabela> iter = listaTabs.listIterator();
-    while (iter.hasNext()) {
-      try {
+		while (iter.hasNext()) {
+			try {
 				out.writeObject(iter.next());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    }
+		}
 
 		// Fechando o arquivo:
 		try {

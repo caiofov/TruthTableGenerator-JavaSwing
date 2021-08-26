@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Tela extends JFrame{
-    JPanel footer = new Footer();
+    // JPanel footer = new Footer();
     JPanel header = new JPanel();
     JPanel body = new JPanel();
     JLabel titulo = new JLabel();
@@ -22,15 +22,15 @@ public class Tela extends JFrame{
 
     public void setTitulo(String texto){
         this.titulo.setText(texto);
-        titulo.setFont(medidas.fonteTitulos);
-        titulo.setAlignmentX(CENTER_ALIGNMENT);
-        this.header.add(titulo);    
+        this.titulo.setFont(medidas.fonteTitulos);
+        this.titulo.setAlignmentX(CENTER_ALIGNMENT);
+        this.titulo.setForeground(medidas.corTitulo); 
+        this.header.add(titulo);
+        
     }
 
     public void mostrarLayoutPrincipal(){ //para testes
         this.body.setBorder(BorderFactory.createTitledBorder("Body"));
         this.header.setBorder(BorderFactory.createTitledBorder("Header"));
-        this.footer.setBorder(BorderFactory.createTitledBorder("Footer"));
-
     }
 }

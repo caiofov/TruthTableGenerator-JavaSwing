@@ -33,14 +33,14 @@ public class Elemento implements Serializable { //essa classe sera basicamente o
     this.tabela.adicionarElemento(this);
   }
 
-  public void setValores(ArrayList valores){
+  public void setValores(ArrayList<Integer> valores){
     this.valores = valores;
   }
   public void addValor(int valor){
     this.valores.add(valor);
   }
 
-  public ArrayList getValores(){
+  public ArrayList<Integer> getValores(){
     return this.valores;
   }
 }

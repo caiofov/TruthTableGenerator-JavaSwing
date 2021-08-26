@@ -1,20 +1,25 @@
-package valoracao.model;
+package valoracao.controller;
 
 import java.util.ArrayList;
 
+import valoracao.model.Elemento;
+import valoracao.model.ExpressaoCompleta;
+import valoracao.model.Tabela;
+import valoracao.model.Variavel;
+
 public class Resolver{
-  ExpressaoCompleta expressao; //recebe a expressao
-  Tabela tabela; //recebe a tabela
-  ArrayList<Elemento> elementos; //elementos da expressao
+	ExpressaoCompleta expressao; //recebe a expressao
+	Tabela tabela; //recebe a tabela
+	ArrayList<Elemento> elementos; //elementos da expressao
   
 	// Construtor:
-  public Resolver (ExpressaoCompleta expressao, Tabela tabela) {
-    this.expressao = expressao;
-    this.tabela = tabela;
-    // this.elementos = expressao.getElementos();
-    
-    this.resolver();
-  }
+  	public Resolver (ExpressaoCompleta expressao, Tabela tabela) {
+		this.expressao = expressao;
+		this.tabela = tabela;
+		// this.elementos = expressao.getElementos();
+		
+		this.resolver();
+  	}
 
 	// Método que resolve a expressão para cada combinação de valor dos elementos:
 	public void resolver() {

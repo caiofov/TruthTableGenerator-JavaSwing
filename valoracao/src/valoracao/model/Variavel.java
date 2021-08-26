@@ -3,10 +3,10 @@ package valoracao.model;
 import java.io.Serializable;
 
 public class Variavel extends Elemento implements Serializable {
-  Variavel(String nome){
+  public Variavel(String nome){
     this.nome = nome;
   }
-  Variavel(String nome, int idx){
+  public Variavel(String nome, int idx){
     this.nome = nome;
     this.indexTabela = idx;
   }

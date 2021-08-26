@@ -14,7 +14,7 @@ public class LeTabelas {
 	public ArrayList<Tabela> listaTabs = new ArrayList<Tabela>();
 	
 	public LeTabelas() {
-		File arquivo = new File("data/tabelasSalvas.bin");
+		File arquivo = new File("valoracao/data/tabelasSalvas.bin");
 		FileInputStream fis = null;
 		ObjectInputStream in = null;
 		Tabela atual = null;
@@ -27,13 +27,15 @@ public class LeTabelas {
 			e.printStackTrace();
 		}
 
+		if (in == null) {
+			System.out.println("Path para o arquivo tabelasSalvas está incorreto!");
+			return;
+		}
+
 		// Lendo o arquivo:
 		while (true) {
 			try {
 				atual = (Tabela) in.readObject();
-				if (atual == null) {
-					break;
-				}
 				this.listaTabs.add(atual);
 			} catch (EOFException e) {
 				break;
@@ -56,7 +58,7 @@ public class LeTabelas {
 	}
 
 	// Atribui a lista de tabelas
-  public void setListaTabs(ArrayList<Tabela> listaTabs) {
-    this.listaTabs = listaTabs;
-  }
+  	public void setListaTabs(ArrayList<Tabela> listaTabs) {
+		this.listaTabs = listaTabs;
+	}
 }

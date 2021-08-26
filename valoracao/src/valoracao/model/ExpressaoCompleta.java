@@ -149,7 +149,7 @@ public class ExpressaoCompleta implements Serializable {
       return false;
     }
     // Se tem mais de 5 Proposições (especificado nas instruções)
-    if (contProp > 5){
+    if (contProp > 4){
       return false;
     }
     // Se todas condições passarem, voltar verdadeiro

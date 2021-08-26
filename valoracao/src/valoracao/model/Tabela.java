@@ -8,7 +8,7 @@ public class Tabela implements Serializable {
   public int num_variaveis; //número de variáveis na tabela (as primeiras colunas)
   public int ndois = 1; //2^n --> não consegui calcular com as operações do java
 
-  public ArrayList<ArrayList> corpo = new ArrayList<ArrayList>(); //onde ficarão os 0 e 1s
+  public ArrayList<ArrayList<Integer>> corpo = new ArrayList<ArrayList<Integer>>(); //onde ficarão os 0 e 1s
   public ArrayList<Elemento> cabecalho = new ArrayList<Elemento>(); //cabeçalho: onde fica o "título" de cada coluna
 
   public Tabela(ExpressaoCompleta exp){
@@ -89,7 +89,7 @@ public class Tabela implements Serializable {
     
   }
 
-  public ArrayList<ArrayList> getCorpo(){
+  public ArrayList<ArrayList<Integer>> getCorpo(){
     return this.corpo;
   }
   public ArrayList<Elemento> getCabecalho(){

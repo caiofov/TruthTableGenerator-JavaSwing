@@ -1,31 +1,39 @@
 package valoracao.view;
 
+import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JOptionPane;
 
 import valoracao.controller.SalvarTabela;
-import valoracao.controller.TabelaDisplay;
+import valoracao.view.TabelaDisplay;
 import valoracao.model.Tabela;
 
-import javax.swing.JOptionPane;
 
 
 
 
 class TelaValoracao extends Tela{
   TabelaDisplay tabelaDisplay;
-  JScrollPane tabelaScroll;
+  static JScrollPane tabelaScroll;
   Tabela tabelaAtual;
 
   String expressao;
   boolean tabelaSalva = false; //diz se a tabela já foi salva (para controlar se o popup aparece ou nao)
-  JPanel body, bodyPreTabela, bodyPosTabela;
+  JPanel body;
+  JPanel bodyPreTabela;
+  JPanel bodyPosTabela;
   
   
   public TelaValoracao(Tabela tabela){
@@ -46,18 +54,28 @@ class TelaValoracao extends Tela{
 
     this.body.setLayout(new BoxLayout (this.body, BoxLayout.Y_AXIS));
 
-    this.add(titulo);
+    this.add(this.header);
     this.add(this.body);
-    this.add(new Footer());
     
     this.setVisible(true);
+  }
+
+	private void salvarImagem(JScrollPane componente) {
+    try {
+      BufferedImage imagem = new BufferedImage(componente.getWidth(), componente.getHeight(), BufferedImage.TYPE_INT_RGB);
+      componente.paintAll(imagem.getGraphics());
+      ImageIO.write(imagem, "png", new File ("valoracao/data/Tabela.png"));
+    } 
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
   
   public void addTextos(String expressao){
     this.bodyPreTabela.setLayout(new BoxLayout (this.bodyPreTabela, BoxLayout.Y_AXIS));
     
-    JLabel texto1 = new JLabel("Expressao: " + expressao);
-    JLabel texto2 = new JLabel("Tabela: ");
+    LabelPadrao texto1 = new LabelPadrao("Expressao: " + expressao);
+    LabelPadrao texto2 = new LabelPadrao("Tabela: ");
     texto1.setFont(medidas.fonteTextos);
     texto2.setFont(medidas.fonteTextos);
 
@@ -71,8 +89,6 @@ class TelaValoracao extends Tela{
   public void addTabela(){
     this.tabelaDisplay = new TabelaDisplay(this.tabelaAtual);
     this.tabelaScroll = this.tabelaDisplay.body;
-
-    // this.tabelaScroll.display.setPreferredSize(new Dimension(medidas.larguraTabelaPrincipal, medidas.alturaTabelaPrincipal)); //setta as dimensões do scrollpane, onde está a tabela
 
     this.body.add(this.tabelaScroll);
   }
@@ -122,8 +138,25 @@ class TelaValoracao extends Tela{
   
     });
 
+    Botao bBaixar = new Botao("Baixar");
+
+    bBaixar.addActionListener(new ActionListener() {
+    
+      public void actionPerformed(ActionEvent e){
+
+        JScrollPane scrollSalvar = tabelaScroll;
+        
+        salvarImagem(scrollSalvar);
+
+        JOptionPane.showMessageDialog(null, "Download concluído.", "Concluído!", JOptionPane.INFORMATION_MESSAGE);
+
+      }
+  
+    });
+
     this.bodyPosTabela.add(bVoltar);
     this.bodyPosTabela.add(bSalvar);
+    this.bodyPosTabela.add(bBaixar);
 
     this.body.add(bodyPosTabela);
   }

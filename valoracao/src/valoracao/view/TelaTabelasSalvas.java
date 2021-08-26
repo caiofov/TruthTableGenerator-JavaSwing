@@ -2,7 +2,10 @@ package valoracao.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
+
 import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -39,9 +42,7 @@ public class TelaTabelasSalvas extends Tela {
         
         this.add(this.header);
         this.add(this.body);
-        this.add(this.footer);
         
-        //this.mostrarLayout(); //para testes
         this.body.setLayout(new BoxLayout(this.body, BoxLayout.Y_AXIS ));
         this.setVisible(true);
     }
@@ -50,7 +51,7 @@ public class TelaTabelasSalvas extends Tela {
     
     public void adicionarBotoes(){
         Botao bVoltar = new Botao("Voltar");
-        Botao bExcluirTabela = new Botao("Excluir Tabela");
+        
     
         bVoltar.addActionListener(new ActionListener() {
     
@@ -61,43 +62,14 @@ public class TelaTabelasSalvas extends Tela {
                 //ao clicar, volta para a tela de início
             }
         });
-
-        bExcluirTabela.addActionListener(new ActionListener() {
-    
-            public void actionPerformed(ActionEvent e){
-                System.out.println("Abrindo opções de exclusão de tabela...");
-
-				        ArrayList<Tabela> lista = leitor.getLista();
-                
-                String num_tabela = (String)JOptionPane.showInputDialog(null, "Qual tabela deseja excluir? ", "Excluir Tabela", JOptionPane.QUESTION_MESSAGE, null, null, "Digite o número da tabela");
-                
-                int x = Integer.parseInt(num_tabela) - 1;
-                if(x < 0 || x > lista.size()-1){
-                    System.out.println("Insira um número válido");
-                    //Alterar a borda da caixa de input e adicionar a mensagem de erro
-                }
-                else{
-                    ExcluirTabela exc = new ExcluirTabela(lista, x);
-                
-                    exc.excluirTab();
-                    
-                    // ATUALIZAR A TELA DE TABELAS SALVAS...
-                    leitor = new LeTabelas();
-                    //bodyTabelasPanel.revalidate();
-                    //bodyTabelasPanel.repaint();
-                    TelaTabelasSalvas.this.dispose();
-                    new TelaTabelasSalvas();
-                }
-            }
-        });
-
         this.bodyPosTabelas.add(bVoltar);
-        this.bodyPosTabelas.add(bExcluirTabela);
         
+        if(this.leitor.getLista().size() > 0){ //se houver tabelas salvas
+            this.addBotaoExcluir(); //adiciona o botão de excluir tabelas
+        }
     }
 
     public void exibirTabelas() {
-
         ArrayList<Tabela> listaTabelas = leitor.getLista();
         int count=1;
 
@@ -106,9 +78,12 @@ public class TelaTabelasSalvas extends Tela {
         }
         else{
           for (Tabela tabela : listaTabelas) {
-            System.out.println(" - - - Tabela "+count+" :");
+            System.out.println(" - - - Tabela "+ count +" :");
             tabela.mostrar();
-            TabelaDisplay tabView = new TabelaDisplay(tabela, "Tabela "+count);
+            
+            int tam = tabela.getCabecalho().size();
+            String expressao = tabela.getCabecalho().get(tam - 1).getNome();
+            TabelaDisplay tabView = new TabelaDisplay(tabela, "Tabela "+ count + " : " + expressao);
 
             this.bodyTabelasPanel.add(tabView);
 
@@ -119,10 +94,44 @@ public class TelaTabelasSalvas extends Tela {
         
     }
 
-    public void mostrarLayout(){
+    private void addBotaoExcluir(){
+        Botao bExcluirTabela = new Botao("Excluir Tabela");
+
+        bExcluirTabela.addActionListener(new ActionListener() {
+    
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Abrindo opções de exclusão de tabela...");
+                LeTabelas leitor2 = new LeTabelas();
+                ArrayList<Tabela> lista = leitor2.getLista();
+                int x = -1;
+                String num_tabela = (String)JOptionPane.showInputDialog(null, "Qual tabela deseja excluir? ", "Excluir Tabela", JOptionPane.QUESTION_MESSAGE, null, null, "Digite o número da tabela");
+                
+        
+                while(x < 0 || x > lista.size()-1){
+                    System.out.println("Insira um número válido");
+                    JOptionPane.showMessageDialog(null, "Digite um número válido.", "Número Inválido", JOptionPane.ERROR_MESSAGE);
+                    num_tabela = (String)JOptionPane.showInputDialog(null, "Qual tabela deseja excluir? ", "Excluir Tabela", JOptionPane.QUESTION_MESSAGE, null, null, "Digite o número da tabela");
+                    x = Integer.parseInt(num_tabela) - 1;
+                    
+                }
+                
+                ExcluirTabela exc = new ExcluirTabela(lista, x);
+                
+                exc.excluirTab();
+                    
+                // ATUALIZAR A TELA DE TABELAS SALVAS...
+                leitor = new LeTabelas();
+                TelaTabelasSalvas.this.dispose();
+                new TelaTabelasSalvas();
+            }
+        });
+
+        this.bodyPosTabelas.add(bExcluirTabela);
+    }
+
+    private void mostrarLayout(){ //para testes
         this.bodyTabelasScroll.setBorder(BorderFactory.createTitledBorder("Tabelas"));
         this.bodyPosTabelas.setBorder(BorderFactory.createTitledBorder("Pos tabelas"));
         this.mostrarLayoutPrincipal();
     }
-
 }

@@ -6,6 +6,7 @@ import javax.swing.JTable;
 
 import valoracao.model.Elemento;
 import valoracao.model.Tabela;
+import valoracao.view.LabelPadrao;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -69,7 +70,7 @@ public class TabelaDisplay extends JPanel{
   }
 
   public void setTitulo(String tit){
-    this.titulo = new JLabel(tit);
+    this.titulo = new LabelPadrao(tit);
     this.add(this.titulo);
   }
 
@@ -79,9 +80,9 @@ public class TabelaDisplay extends JPanel{
     ArrayList<Elemento> cabecalho = this.tabela.getCabecalho();
     String[] cabecalhoArray = new String[cabecalho.size()]; 
 
-    ArrayList<ArrayList> colunas = this.tabela.getCorpo();
+    ArrayList<ArrayList<Integer>> colunas = this.tabela.getCorpo();
     //teremos que inverter o formato que criamos da tabela para o JTable. Cada "subarray" é uma linha e não uma coluna.
-    ArrayList<ArrayList> linhas = this.transpor(colunas);
+    ArrayList<ArrayList<Integer>> linhas = this.transpor(colunas);
 
     Integer[][] linhasArray = new Integer[linhas.size()][cabecalho.size()];
 
@@ -109,8 +110,8 @@ public class TabelaDisplay extends JPanel{
   }
 
 
-  private ArrayList<ArrayList> transpor(ArrayList<ArrayList> lista){ //fonte: https://stackoverflow.com/questions/2941997/how-to-transpose-listlist
-    ArrayList<ArrayList> ret = new ArrayList<ArrayList>();
+  private ArrayList<ArrayList<Integer>> transpor(ArrayList<ArrayList<Integer>> lista){ //fonte: https://stackoverflow.com/questions/2941997/how-to-transpose-listlist
+    ArrayList<ArrayList<Integer>> ret = new ArrayList<ArrayList<Integer>>();
         final int N = lista.get(0).size();
         for (int i = 0; i < N; i++) {
             ArrayList<Integer> col = new ArrayList<Integer>();

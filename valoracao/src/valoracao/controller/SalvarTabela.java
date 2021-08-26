@@ -23,7 +23,7 @@ public class SalvarTabela {
 	// Método que salva a tabela no arquivo:
 	public void salvarTab () {
 		// Criando/abrindo o arquivo:
-		File arquivo = new File ("data/tabelasSalvas.bin");
+		File arquivo = new File ("valoracao/data/tabelasSalvas.bin");
 		boolean append = arquivo.exists();
 		FileOutputStream fos = null;
 		AppendableObjectOutputStream out = null;
@@ -33,6 +33,11 @@ public class SalvarTabela {
 			out = new AppendableObjectOutputStream(fos, append);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+
+		if (out == null) {
+			System.out.println("Path para o arquivo tabelasSalvas está incorreto!");
+			return;
 		}
 
 		// Escrevendo no arquivo:
