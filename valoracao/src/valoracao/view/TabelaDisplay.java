@@ -6,6 +6,7 @@ import javax.swing.JTable;
 
 import valoracao.model.Elemento;
 import valoracao.model.Tabela;
+import valoracao.view.LabelPadrao;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -69,7 +70,7 @@ public class TabelaDisplay extends JPanel{
   }
 
   public void setTitulo(String tit){
-    this.titulo = new JLabel(tit);
+    this.titulo = new LabelPadrao(tit);
     this.add(this.titulo);
   }
 

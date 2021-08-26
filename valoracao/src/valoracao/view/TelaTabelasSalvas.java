@@ -2,7 +2,10 @@ package valoracao.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
+
 import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -48,7 +51,7 @@ public class TelaTabelasSalvas extends Tela {
     
     public void adicionarBotoes(){
         Botao bVoltar = new Botao("Voltar");
-        Botao bExcluirTabela = new Botao("Excluir Tabela");
+        
     
         bVoltar.addActionListener(new ActionListener() {
     
@@ -59,6 +62,43 @@ public class TelaTabelasSalvas extends Tela {
                 //ao clicar, volta para a tela de início
             }
         });
+        this.bodyPosTabelas.add(bVoltar);
+        
+        if(this.leitor.getLista().size() > 0){ //se houver tabelas salvas
+            this.addBotaoExcluir(); //adiciona o botão de excluir tabelas
+        }
+    }
+
+    public void exibirTabelas() {
+        ArrayList<Tabela> listaTabelas = leitor.getLista();
+        int count=1;
+
+        if(listaTabelas.size()==0){
+          this.bodyTabelasPanel.add(new JLabel("Não há tabelas a exibir"));
+        }
+        else{
+          for (Tabela tabela : listaTabelas) {
+            System.out.println(" - - - Tabela "+ count +" :");
+            tabela.mostrar();
+            
+            int tam = tabela.getCabecalho().size();
+            String expressao = tabela.getCabecalho().get(tam - 1).getNome();
+            TabelaDisplay tabView = new TabelaDisplay(tabela, "Tabela "+ count + " : " + expressao);
+
+            int tabHeight = tabela.ndois * 27;
+            if (tabHeight > 200){tabHeight = 200;}
+            tabView.setPreferredSize(new Dimension(250, tabHeight));
+            this.bodyTabelasPanel.add(tabView);
+
+            count++;
+          }
+        }
+        
+        
+    }
+
+    private void addBotaoExcluir(){
+        Botao bExcluirTabela = new Botao("Excluir Tabela");
 
         bExcluirTabela.addActionListener(new ActionListener() {
     
@@ -81,46 +121,18 @@ public class TelaTabelasSalvas extends Tela {
                     
                     // ATUALIZAR A TELA DE TABELAS SALVAS...
                     leitor = new LeTabelas();
-                    //bodyTabelasPanel.revalidate();
-                    //bodyTabelasPanel.repaint();
                     TelaTabelasSalvas.this.dispose();
                     new TelaTabelasSalvas();
                 }
             }
         });
 
-        this.bodyPosTabelas.add(bVoltar);
         this.bodyPosTabelas.add(bExcluirTabela);
-        
     }
 
-    public void exibirTabelas() {
-
-        ArrayList<Tabela> listaTabelas = leitor.getLista();
-        int count=1;
-
-        if(listaTabelas.size()==0){
-          this.bodyTabelasPanel.add(new JLabel("Não há tabelas a exibir"));
-        }
-        else{
-          for (Tabela tabela : listaTabelas) {
-            System.out.println(" - - - Tabela "+count+" :");
-            tabela.mostrar();
-            TabelaDisplay tabView = new TabelaDisplay(tabela, "Tabela "+count);
-
-            this.bodyTabelasPanel.add(tabView);
-
-            count++;
-          }
-        }
-        
-        
-    }
-
-    public void mostrarLayout(){
+    private void mostrarLayout(){ //para testes
         this.bodyTabelasScroll.setBorder(BorderFactory.createTitledBorder("Tabelas"));
         this.bodyPosTabelas.setBorder(BorderFactory.createTitledBorder("Pos tabelas"));
         this.mostrarLayoutPrincipal();
     }
-
 }
