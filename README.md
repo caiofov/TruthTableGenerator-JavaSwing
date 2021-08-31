@@ -5,6 +5,7 @@ Projeto da cadeira de Técnicas de Programação I - UFC 2021.1
 - Caio de Freitas Oliveira - **501375**
 - Felipe Sousa da Silveira - **493849**
 - João Pedro de Almeida Isaias - **501202**
+- Rafael Coelho Gondim de Oliveira Lima - **497493**
 
 ### Objetivo
 No estudo da lógica computacional, a valoração de uma fórmula lógica mostra sua importância por ser uma das bases da computação. Este aplicativo visa auxiliar o estudo na área, gerando uma tabela verdade a partir de uma fórmula lógica. No sistema, o usuário poderá, também, salvar a tabela verdade ou excluí-la, de acordo com sua preferência.
